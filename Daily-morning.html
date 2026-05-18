@@ -1,0 +1,3009 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#1A1714">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="晨間問候">
+<title>晨間問候 · Daily Morning</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Cormorant+Garamond:wght@300;400;500;600&family=Caveat:wght@500&family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
+
+<link rel="manifest" href='data:application/manifest+json;charset=utf-8,{"name":"晨間問候 Daily Morning","short_name":"晨間問候","description":"每日一張溫暖的早安問候圖","start_url":"./","scope":"./","display":"standalone","orientation":"portrait","background_color":"%231A1714","theme_color":"%23C8704E","icons":[{"src":"data:image/svg%2Bxml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 192 192%27%3E%3Crect width=%27192%27 height=%27192%27 rx=%2742%27 fill=%27%23C8704E%27/%3E%3Ctext x=%2796%27 y=%27130%27 font-size=%2796%27 text-anchor=%27middle%27 fill=%27white%27 font-family=%27serif%27 font-weight=%27600%27%3E晨%3C/text%3E%3C/svg%3E","sizes":"192x192","type":"image/svg+xml","purpose":"any"},{"src":"data:image/svg%2Bxml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 512 512%27%3E%3Crect width=%27512%27 height=%27512%27 rx=%27112%27 fill=%27%23C8704E%27/%3E%3Ctext x=%27256%27 y=%27348%27 font-size=%27260%27 text-anchor=%27middle%27 fill=%27white%27 font-family=%27serif%27 font-weight=%27600%27%3E晨%3C/text%3E%3C/svg%3E","sizes":"512x512","type":"image/svg+xml","purpose":"any maskable"}]}'>
+
+<style>
+:root {
+  /* ===== 深色佈景主題 — 暖咖啡夜色 ===== */
+  --bg: #1A1714;            /* 主背景：深咖啡黑 */
+  --bg-card: #25201C;       /* 卡片：略亮的深咖啡 */
+  --bg-soft: #302921;       /* 軟區塊：紅褐 */
+  --ink: #F0E8D8;           /* 主文字：暖米白 */
+  --ink-soft: #B8AC9C;      /* 次要文字 */
+  --ink-muted: #7E7468;     /* 弱化文字 */
+  --accent: #E08A60;        /* 主色：明亮橘 (深底可讀性更好) */
+  --accent-deep: #C26E45;   /* 主色深 */
+  --accent-soft: #3D2B23;   /* 主色輕量背景 (深色版) */
+  --border: #3A332C;        /* 邊線 */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow:    0 4px 16px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.55);
+  --r-sm: 8px;
+  --r: 14px;
+  --r-lg: 22px;
+  --serif: "Noto Serif TC", "Cormorant Garamond", "Songti TC", "PingFang TC", serif;
+  --sans:  "Noto Sans TC", -apple-system, "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --hand:  "Caveat", cursive;
+  /* ===== 字體預設 (供文字樣式切換使用) ===== */
+  --font-classic: "Noto Serif TC", "Songti TC", serif;
+  --font-brush:   "Ma Shan Zheng", "DFKai-SB", "標楷體", "Noto Serif TC", serif;
+  --font-poster:  "ZCOOL XiaoWei", "Noto Serif TC", serif;
+  --font-retro:   "ZCOOL QingKe HuangYou", "Noto Serif TC", serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at top right, rgba(200, 112, 78, 0.06), transparent 50%),
+    radial-gradient(ellipse at bottom left, rgba(184, 149, 106, 0.08), transparent 50%),
+    var(--bg);
+  background-attachment: fixed;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) calc(env(safe-area-inset-bottom) + 24px) env(safe-area-inset-left);
+}
+
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 14px 18px 32px;
+}
+
+/* ========== Header ========== */
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 4px 18px;
+  margin-bottom: 8px;
+}
+.head .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.head .logo {
+  width: 38px; height: 38px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #D88A60, #B5562F);
+  display: grid; place-items: center;
+  font-family: var(--serif);
+  font-weight: 600;
+  color: white;
+  font-size: 20px;
+  box-shadow: 0 4px 12px rgba(200, 112, 78, 0.3);
+}
+.head .titles .t1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+.head .titles .t2 {
+  font-size: 11px;
+  color: var(--ink-muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: -2px;
+}
+.head .day {
+  text-align: right;
+  font-family: var(--serif);
+  line-height: 1.1;
+}
+.head .day .num {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--accent-deep);
+}
+.head .day .ym {
+  font-size: 11px;
+  color: var(--ink-muted);
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+/* ========== Hero quote ========== */
+.hero {
+  text-align: center;
+  padding: 4px 8px 22px;
+  position: relative;
+}
+.hero .quote {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--ink-soft);
+  letter-spacing: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.hero .quote::before, .hero .quote::after {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--ink-muted);
+  opacity: 0.4;
+}
+
+/* ========== Preview ========== */
+.preview {
+  background: var(--bg-card);
+  border-radius: var(--r-lg);
+  padding: 14px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  position: relative;
+}
+.preview .frame {
+  position: relative;
+  border-radius: var(--r);
+  overflow: hidden;
+  background: #f0e8d8;
+  aspect-ratio: 1 / 1;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
+}
+.preview canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.preview .badge {
+  position: absolute;
+  top: 22px; right: 22px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--ink-soft);
+  font-family: var(--serif);
+}
+.preview .loading {
+  position: absolute; inset: 14px;
+  border-radius: var(--r);
+  display: grid; place-items: center;
+  background: rgba(255,254,251,0.7);
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.preview .loading.show { opacity: 1; }
+.spinner {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ========== Action Bar ========== */
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin: 18px 0 8px;
+}
+.act {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 14px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: var(--shadow-sm);
+}
+.act:active { transform: scale(0.97); background: var(--bg-soft); }
+.act.primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  color: white;
+  border-color: var(--accent-deep);
+  box-shadow: 0 4px 14px rgba(200, 112, 78, 0.25);
+}
+.act.primary:active { background: var(--accent-deep); }
+.act svg { width: 22px; height: 22px; stroke-width: 1.6; }
+.act .lbl { font-size: 12px; letter-spacing: 0.5px; }
+
+.actions-secondary {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+.act-mini {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 9px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: all 0.15s;
+}
+.act-mini:active { background: var(--bg-soft); transform: scale(0.97); }
+.style-card .cam { font-size: 9px; vertical-align: middle; opacity: 0.7; }
+.style-card.photo-preset .photo-thumb {
+  width: 100%; height: 96px;
+  position: relative;
+  border-radius: var(--r-sm) var(--r-sm) 0 0;
+  overflow: hidden;
+  background-color: var(--bg-soft);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.style-card.photo-preset .photo-tag {
+  position: absolute;
+  top: 6px; left: 6px;
+  background: rgba(0,0,0,0.45);
+  color: white;
+  font-size: 15px;
+  padding: 2px 4px;
+  border-radius: 6px;
+  line-height: 1.2;
+}
+.style-card.photo-preset .lbl {
+  background: var(--bg-card);
+  padding: 8px 4px;
+  font-size: 11px;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+  border-top: 1px solid var(--border);
+}
+
+/* ========== 主題分類下拉選單 ========== */
+.cat-row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+  margin: 6px 0 14px;
+}
+.cat-dropdown {
+  flex: 1 1 auto;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 11px 38px 11px 14px;
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23E08A60' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  transition: all 0.15s;
+}
+.cat-dropdown:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(200, 112, 78, 0.1);
+}
+.cat-dropdown:active {
+  background-color: var(--bg-soft);
+}
+
+/* 今日推薦徽章 */
+.today-badge {
+  flex: 0 0 auto;
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  color: white;
+  border: none;
+  border-radius: var(--r);
+  padding: 0 14px;
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 3px 10px rgba(200, 112, 78, 0.25);
+  transition: all 0.15s;
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.today-badge:active {
+  transform: scale(0.97);
+  background: var(--accent-deep);
+}
+.today-badge::before {
+  content: "✦ ";
+  opacity: 0.9;
+}
+
+/* 「今日」星形標記（圖片卡片右上角） */
+.style-card.today .photo-thumb {
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+.today-pin {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: var(--accent);
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 99px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 6px rgba(200, 112, 78, 0.4);
+  z-index: 2;
+}
+
+/* ========== 進階設定中的 chip 選項（濾鏡、字體樣式）========== */
+.opt-chips {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+  gap: 8px;
+  margin: 10px 0 14px;
+}
+.opt-chip {
+  background: var(--bg-soft);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 9px 6px;
+  font-family: var(--serif);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+  line-height: 1.1;
+}
+.opt-chip .chip-icon {
+  font-size: 18px;
+  opacity: 0.85;
+}
+.opt-chip .chip-name {
+  font-size: 12px;
+}
+.opt-chip .chip-desc {
+  font-size: 9px;
+  color: var(--ink-muted);
+  letter-spacing: 0;
+}
+.opt-chip:active {
+  transform: scale(0.96);
+}
+.opt-chip.active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 2px 8px rgba(224, 138, 96, 0.2);
+}
+.opt-chip.active .chip-desc {
+  color: var(--accent-deep);
+}
+
+/* 字體 chip 的字名用其自己的字體 */
+.opt-chip[data-fs="classic"] .chip-name { font-family: var(--font-classic); font-weight: 600; }
+.opt-chip[data-fs="brush"]   .chip-name { font-family: var(--font-brush);   font-weight: 400; font-size: 14px; }
+.opt-chip[data-fs="poster"]  .chip-name { font-family: var(--font-poster);  font-weight: 400; }
+.opt-chip[data-fs="retro"]   .chip-name { font-family: var(--font-retro);   font-weight: 400; }
+
+/* ========== 圖片來源標記 (U=Unsplash / P=Pexels / S=StockSnap / ★=自訂) ========== */
+.source-tag {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  background: rgba(0, 0, 0, 0.55);
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  border-radius: 50%;
+  letter-spacing: 0;
+  z-index: 2;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.source-tag[data-src="pexels"]    { background: rgba(5, 162, 152, 0.85); }
+.source-tag[data-src="stocksnap"] { background: rgba(89, 99, 156, 0.85); }
+.source-tag[data-src="custom"]    { background: rgba(200, 112, 78, 0.9); }
+
+/* ========== ➕ 自訂圖片卡片 ========== */
+.style-card.add-custom {
+  cursor: pointer;
+}
+.style-card.add-custom .photo-thumb.add-thumb {
+  background: linear-gradient(135deg, rgba(200, 112, 78, 0.08), rgba(200, 112, 78, 0.18));
+  border: 2px dashed rgba(200, 112, 78, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: all 0.15s;
+}
+.style-card.add-custom:hover .photo-thumb.add-thumb,
+.style-card.add-custom:active .photo-thumb.add-thumb {
+  background: linear-gradient(135deg, rgba(200, 112, 78, 0.15), rgba(200, 112, 78, 0.28));
+  border-color: var(--accent);
+}
+.style-card.add-custom .add-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+.style-card.add-custom .add-text {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--accent-deep);
+  text-align: center;
+  line-height: 1.3;
+  letter-spacing: 0.3px;
+}
+.style-card.add-custom .lbl {
+  background: rgba(200, 112, 78, 0.1);
+  color: var(--accent-deep);
+  font-weight: 600;
+}
+
+/* 移除自訂圖按鈕（× 圖示，浮在縮圖右上） */
+.remove-custom {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  z-index: 3;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.style-card.custom:hover .remove-custom,
+.style-card.custom:active .remove-custom {
+  display: flex;
+}
+.remove-custom:hover {
+  background: rgba(200, 30, 30, 0.85);
+}
+
+/* 自訂圖片卡片左上角的小標籤 */
+.style-card.custom::before {
+  content: "我的";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  background: rgba(200, 112, 78, 0.9);
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  z-index: 2;
+}
+.style-card.custom .photo-tag {
+  display: none;
+}
+
+/* ========== Cards ========== */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--r-lg);
+  padding: 18px 18px 20px;
+  margin-bottom: 14px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.card h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  color: var(--ink);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.card .sub {
+  font-size: 11px;
+  color: var(--ink-muted);
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  font-family: var(--serif);
+}
+.card h3 .num {
+  display: inline-block;
+  font-family: var(--hand);
+  font-size: 20px;
+  color: var(--accent);
+  font-weight: 500;
+  margin-right: 4px;
+  transform: translateY(-2px);
+}
+
+/* ========== Style Picker ========== */
+.styles-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  margin: 0 -18px;
+  padding: 4px 18px 12px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.styles-scroll::-webkit-scrollbar { display: none; }
+
+.style-card {
+  flex: 0 0 96px;
+  scroll-snap-align: center;
+  border-radius: var(--r);
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-sm);
+}
+.style-card.active {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(200, 112, 78, 0.25);
+}
+.style-card .thumb {
+  width: 100%;
+  height: 96px;
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.style-card .lbl {
+  background: var(--bg-card);
+  padding: 8px 4px;
+  font-size: 11px;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+  border-top: 1px solid var(--border);
+}
+
+/* Photo thumbnail card (uses real image) */
+.style-card .photo-thumb {
+  width: 100%;
+  height: 96px;
+  background-size: cover;
+  background-position: center;
+  background-color: #d6cfc1;
+  position: relative;
+}
+.style-card .photo-thumb::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.25));
+}
+.style-card .photo-tag {
+  position: absolute;
+  top: 6px; left: 6px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(4px);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.5px;
+  z-index: 1;
+}
+
+/* Section divider in horizontal scroll */
+.styles-scroll .sep {
+  flex: 0 0 1px;
+  background: var(--border);
+  align-self: center;
+  height: 80px;
+  margin: 0 4px;
+  scroll-snap-align: none;
+}
+
+/* Custom URL card */
+.style-card.custom .thumb {
+  background: linear-gradient(135deg, #FBF5EE, #F2DDD0);
+  color: var(--accent-deep);
+  font-size: 32px;
+  font-weight: 200;
+}
+
+/* Custom URL input area (expandable) */
+.url-input-wrap {
+  margin-top: 12px;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: var(--bg);
+  border: 1px dashed var(--accent);
+  border-radius: var(--r);
+}
+.url-input-wrap.show { display: flex; }
+.url-input-wrap input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  border-radius: var(--r-sm);
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink);
+}
+.url-input-wrap input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.url-input-row {
+  display: flex;
+  gap: 8px;
+}
+.url-input-wrap .btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: var(--r-sm);
+  padding: 9px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: var(--sans);
+}
+.url-input-wrap .btn:active { background: var(--accent-deep); }
+.url-input-wrap .btn.ghost {
+  background: transparent;
+  color: var(--ink-soft);
+  border: 1px solid var(--border);
+}
+.url-input-wrap .hint {
+  font-size: 11px;
+  color: var(--ink-muted);
+  line-height: 1.5;
+}
+.url-input-wrap .hint a {
+  color: var(--accent-deep);
+  text-decoration: none;
+  font-weight: 500;
+}
+.url-input-wrap .recent {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.url-input-wrap .recent .ru {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ========== Text Editor ========== */
+.text-edit {
+  position: relative;
+}
+.text-edit textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  border-radius: var(--r);
+  padding: 14px 16px;
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--ink);
+  resize: none;
+  min-height: 70px;
+  letter-spacing: 1px;
+  transition: all 0.15s;
+}
+.text-edit textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--bg-card);
+  box-shadow: 0 0 0 3px rgba(200, 112, 78, 0.08);
+}
+.text-tools {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.chip {
+  background: var(--bg-soft);
+  border: 1px solid transparent;
+  padding: 7px 12px;
+  border-radius: 99px;
+  font-size: 12px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.chip:active { transform: scale(0.96); }
+.chip.outline {
+  background: transparent;
+  border-color: var(--border);
+}
+.chip.accent {
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+}
+
+/* ========== Library ========== */
+.library {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 4px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.library.open { max-height: 600px; overflow-y: auto; padding-top: 10px; }
+.lib-item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+  font-family: var(--serif);
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+}
+.lib-item:active { background: var(--accent-soft); border-color: var(--accent); }
+
+/* ========== Settings ========== */
+.collapsible summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  font-family: var(--serif);
+  letter-spacing: 1px;
+}
+.collapsible summary::-webkit-details-marker { display: none; }
+.collapsible summary::after {
+  content: "→";
+  transition: transform 0.2s;
+  color: var(--accent);
+}
+.collapsible[open] summary::after { transform: rotate(90deg); }
+.collapsible[open] summary {
+  border-radius: var(--r) var(--r) 0 0;
+  border-bottom: none;
+}
+.collapsible-body {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--r) var(--r);
+  padding: 4px 18px 18px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+.collapsible-body h4 {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 14px 0 6px;
+  letter-spacing: 0.5px;
+}
+.collapsible-body code {
+  background: var(--bg-soft);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: ui-monospace, monospace;
+  color: var(--accent-deep);
+}
+.collapsible-body ol, .collapsible-body ul {
+  padding-left: 20px;
+  margin: 6px 0;
+}
+.collapsible-body li { margin: 4px 0; }
+
+/* ========== Toast ========== */
+.toast {
+  position: fixed;
+  bottom: max(24px, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--ink);
+  color: white;
+  padding: 12px 22px;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  z-index: 99;
+  max-width: 90%;
+  text-align: center;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ========== Footer ========== */
+.foot {
+  text-align: center;
+  padding: 30px 0 12px;
+  font-family: var(--serif);
+  font-size: 11px;
+  color: var(--ink-muted);
+  letter-spacing: 2px;
+}
+.foot .dot { color: var(--accent); margin: 0 8px; }
+
+/* iOS install hint */
+.install-hint {
+  display: none;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: var(--r);
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  font-size: 12px;
+  color: var(--accent-deep);
+  position: relative;
+}
+.install-hint .x {
+  position: absolute;
+  top: 6px; right: 10px;
+  font-size: 18px;
+  color: var(--accent-deep);
+  cursor: pointer;
+  line-height: 1;
+}
+.install-hint b { font-weight: 600; }
+
+@media (min-width: 540px) {
+  .app { padding-top: 28px; }
+}
+</style>
+</head>
+<body>
+
+<div class="app" id="app">
+
+  <!-- Header -->
+  <header class="head">
+    <div class="brand">
+      <div class="logo">晨</div>
+      <div class="titles">
+        <div class="t1">晨間問候</div>
+        <div class="t2">Daily Morning</div>
+      </div>
+    </div>
+    <div class="day">
+      <div class="num" id="dayNum">--</div>
+      <div class="ym" id="dayYm">— —</div>
+    </div>
+  </header>
+
+  <!-- iOS Install Hint -->
+  <div class="install-hint" id="installHint">
+    <span class="x" onclick="document.getElementById('installHint').style.display='none'">×</span>
+    <b>📱 加到主畫面</b>：點底部 <b>分享 ⎙</b> → <b>加入主畫面</b>，每天打開超快。
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="quote">願你今日心如朝陽~好運一路發</div>
+  </div>
+
+  <!-- Preview -->
+  <div class="preview">
+    <div class="frame">
+      <canvas id="canvas" width="1080" height="1080"></canvas>
+      <div class="badge" id="badge">晨曦</div>
+      <div class="loading" id="loading"><div class="spinner"></div></div>
+    </div>
+  </div>
+
+  <!-- Style Picker Card — 分類下拉選單 + 圖片網格 -->
+  <div class="card">
+    <h3><span class="num">01</span>選擇風格</h3>
+    <div class="sub">Daily Morning Pictures · 每天推薦不同圖</div>
+
+    <!-- 主題分類下拉選單 + 今日推薦徽章 -->
+    <div class="cat-row">
+      <select id="catDropdown" class="cat-dropdown" aria-label="選擇主題分類"></select>
+      <button id="todayBadge" class="today-badge" type="button">今日推薦</button>
+    </div>
+
+    <!-- 該分類下的圖片網格 -->
+    <div class="styles-scroll" id="styles"></div>
+  </div>
+
+  <!-- Text Editor Card -->
+  <div class="card">
+    <h3><span class="num">02</span>祝福文字</h3>
+    <div class="sub">Greeting Message</div>
+    <div class="text-edit">
+      <textarea id="msgInput" placeholder="輸入您的祝福..." maxlength="20"></textarea>
+      <div class="text-tools">
+        <button class="chip accent" onclick="useTodayGreeting()">✦ 今日推薦</button>
+        <button class="chip" onclick="randomMessage()">隨機一句</button>
+        <button class="chip outline" id="libToggle" onclick="toggleLibrary()">📚 文案庫 ▾</button>
+      </div>
+      <div class="library" id="library"></div>
+    </div>
+  </div>
+
+  <!-- Primary Actions -->
+  <div class="actions">
+    <button class="act primary" onclick="actDownload()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span class="lbl">下載到相簿</span>
+    </button>
+    <button class="act" onclick="actShare()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      <span class="lbl">LINE / FB</span>
+    </button>
+    <button class="act" onclick="actCopy()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      <span class="lbl">複製圖片</span>
+    </button>
+  </div>
+
+  <!-- Secondary Actions -->
+  <div class="actions-secondary">
+    <button class="act-mini" onclick="actEmail()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Email 寄送
+    </button>
+    <button class="act-mini" onclick="actNewRandom()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+      隨機換一張
+    </button>
+  </div>
+
+  <!-- Settings Card -->
+  <details class="collapsible">
+    <summary>進階設定 · ADVANCED</summary>
+    <div class="collapsible-body">
+
+      <h4>🎨 圖片濾鏡</h4>
+      <div class="opt-chips" id="filterChips"></div>
+
+      <h4>✒️ 字體樣式</h4>
+      <div class="opt-chips" id="fontChips"></div>
+
+      <h4>圖片中的日期</h4>
+      <label style="display:flex; align-items:center; gap:8px; margin:6px 0;">
+        <input type="checkbox" id="showDate" checked> 顯示日期
+      </label>
+      <label style="display:flex; align-items:center; gap:8px; margin:6px 0;">
+        <input type="checkbox" id="showWeekday" checked> 顯示星期
+      </label>
+
+      <h4>署名 / 浮水印（可選）</h4>
+      <input type="text" id="signature" placeholder="例如：阿嬤 Good Morning" maxlength="20" style="width:100%; padding:8px 12px; border:1px solid var(--border); border-radius:8px; background:var(--bg); font-family:var(--serif); font-size:13px;">
+
+      <h4>📲 升級為自動發送（後端教學）</h4>
+      <p style="margin:6px 0;">本網頁已能滿足日常使用。若您想升級為「每天早上 6:30 自動寄到 LINE / Email」，請另外搭配 Google Apps Script 後端，教學文件已隨此檔案附上 <code>setup.docx</code>。</p>
+
+      <h4>🔒 隱私說明</h4>
+      <p style="margin:6px 0;">此網頁完全在您手機本機執行，<b>不會上傳任何資料</b>。所有設定僅儲存在瀏覽器。</p>
+    </div>
+  </details>
+
+  <div class="foot">
+    Daily Ritual <span class="dot">•</span> Made with care
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================================
+// 30+ days of greeting messages (整理自您的文件 + 擴充)
+// ============================================================
+const GREETINGS = [
+  '新的一天 新的開始', '早安 天天好心情', '今天也要加油', '微笑迎接今天',
+  '天天都有好運', '心想事成', '願你今日順利', '一切都會更好',
+  '今天會很棒', '好事正在發生', '早安 天天好運', '加油 你可以的',
+  '今天也開心', '生活很美好', '一切順心', '保持好心情',
+  '今天充滿希望', '微笑面對每一天', '幸福正在靠近', '今天會更好',
+  '開心最重要', '好運降臨', '心情很陽光', '每天都值得期待',
+  '今天也是好日子', '勇敢前進', '微笑是力量', '生活充滿美好',
+  '今天也要努力', '願你一切順利', '早安 平安喜樂', '美好的一天開始',
+  '心存感恩', '相信自己', '溫暖如初', '一日之計在於晨',
+  '清晨好風光', '陽光在等你', '小確幸滿滿', '願你被溫柔以待',
+  '靜下心 享受早晨', '今天的你最棒', '有夢就要去追', '新的一週新氣象',
+  '健康平安', '事事如意', '萬事勝意'
+];
+
+// ============================================================
+// Visual Templates (8 styles via Canvas)
+// ============================================================
+const TEMPLATES = {
+  sunrise: {
+    name: '晨曦溫暖', emoji: '☀️',
+    thumb: 'linear-gradient(160deg, #FFE5C7 0%, #FFB088 60%, #E88B5A 100%)',
+    render(ctx, w, h, msg, dateStr, weekStr, sig) {
+      // Soft warm gradient bg
+      const g = ctx.createLinearGradient(0, 0, 0, h);
+      g.addColorStop(0, '#FFEED6'); g.addColorStop(0.5, '#FFCBA0'); g.addColorStop(1, '#F09567');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+
+      // Sun glow top right
+      const sg = ctx.createRadialGradient(w*0.78, h*0.22, 0, w*0.78, h*0.22, w*0.55);
+      sg.addColorStop(0, 'rgba(255,250,210,0.8)');
+      sg.addColorStop(0.4, 'rgba(255,235,180,0.3)');
+      sg.addColorStop(1, 'rgba(255,235,180,0)');
+      ctx.fillStyle = sg; ctx.fillRect(0, 0, w, h);
+
+      // Sun disc
+      ctx.beginPath();
+      ctx.arc(w*0.78, h*0.22, w*0.085, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(255,250,220,0.9)';
+      ctx.fill();
+
+      // Subtle horizon line
+      ctx.strokeStyle = 'rgba(122,57,18,0.18)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(w*0.1, h*0.65); ctx.lineTo(w*0.9, h*0.65);
+      ctx.stroke();
+
+      // Soft cloud shapes
+      ctx.fillStyle = 'rgba(255,255,255,0.35)';
+      drawCloud(ctx, w*0.18, h*0.32, w*0.12);
+      drawCloud(ctx, w*0.45, h*0.45, w*0.08);
+
+      // Main message
+      drawTitleSerif(ctx, msg, w/2, h*0.45, w*0.78, '#5A2810', 600);
+
+      // Date
+      drawDateBlock(ctx, dateStr, weekStr, w/2, h*0.72, '#7A3F1F');
+
+      // Signature
+      if (sig) drawSignature(ctx, sig, w/2, h*0.92, '#7A3F1F');
+      drawCornerMark(ctx, w, h, '#7A3F1F');
+    }
+  },
+
+  mountain: {
+    name: '山曙勵志', emoji: '⛰️',
+    thumb: 'linear-gradient(180deg, #FFC79A 0%, #FF8A6B 35%, #6E5BA0 75%, #2C2A57 100%)',
+    render(ctx, w, h, msg, dateStr, weekStr, sig) {
+      const g = ctx.createLinearGradient(0, 0, 0, h);
+      g.addColorStop(0, '#FFD6A8'); g.addColorStop(0.35, '#FF8B7A');
+      g.addColorStop(0.7, '#7B5BA0'); g.addColorStop(1, '#2A2858');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+
+      // Sun
+      ctx.beginPath();
+      ctx.arc(w/2, h*0.55, w*0.08, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(255,240,200,0.95)';
+      ctx.fill();
+      // Sun glow
+      const sg = ctx.createRadialGradient(w/2, h*0.55, 0, w/2, h*0.55, w*0.3);
+      sg.addColorStop(0, 'rgba(255,230,180,0.4)');
+      sg.addColorStop(1, 'rgba(255,230,180,0)');
+      ctx.fillStyle = sg; ctx.fillRect(0, 0, w, h);
+
+      // Mountains (back)
+      ctx.fillStyle = 'rgba(60,50,90,0.7)';
+      ctx.beginPath();
+      ctx.moveTo(0, h*0.7);
+      ctx.lineTo(w*0.18, h*0.55);
+      ctx.lineTo(w*0.32, h*0.62);
+      ctx.lineTo(w*0.5, h*0.5);
+      ctx.lineTo(w*0.68, h*0.6);
+      ctx.lineTo(w*0.82, h*0.55);
+      ctx.lineTo(w, h*0.7);
+      ctx.lineTo(w, h);
+      ctx.lineTo(0, h);
+      ctx.closePath(); ctx.fill();
+
+      // Mountains (front)
+      ctx.fillStyle = '#1F1C44';
+      ctx.beginPath();
+      ctx.moveTo(0, h);
+      ctx.lineTo(0, h*0.78);
+      ctx.lineTo(w*0.12, h*0.7);
+      ctx.lineTo(w*0.28, h*0.78);
+      ctx.lineTo(w*0.45, h*0.65);
+      ctx.lineTo(w*0.6, h*0.74);
+      ctx.lineTo(w*0.78, h*0.66);
+      ctx.lineTo(w*0.92, h*0.74);
+      ctx.lineTo(w, h*0.7);
+      ctx.lineTo(w, h);
+      ctx.closePath(); ctx.fill();
+
+      // Stars
+      ctx.fillStyle = 'rgba(255,255,255,0.7)';
+      [[0.15,0.12],[0.32,0.18],[0.78,0.1],[0.88,0.22],[0.5,0.08]].forEach(([x,y])=>{
+        ctx.beginPath(); ctx.arc(w*x, h*y, 1.5, 0, Math.PI*2); ctx.fill();
+      });
+
+      // Title - white serif at top
+      drawTitleSerif(ctx, msg, w/2, h*0.28, w*0.8, '#FFFFFF', 600);
+
+      // Date - white at bottom over mountains
+      drawDateBlock(ctx, dateStr, weekStr, w/2, h*0.9, 'rgba(255,255,255,0.95)');
+
+      if (sig) drawSignature(ctx, sig, w*0.85, h*0.96, 'rgba(255,255,255,0.8)', 'right');
+      drawCornerMark(ctx, w, h, 'rgba(255,255,255,0.8)');
+    }
+  },
+
+  pastel: {
+    name: '嫩粉可愛', emoji: '🌸',
+    thumb: 'linear-gradient(135deg, #FFE0EC 0%, #FFF2C5 50%, #D4F0FF 100%)',
+    render(ctx, w, h, msg, dateStr, weekStr, sig) {
+      // Pastel multi gradient
+      const g = ctx.createLinearGradient(0, 0, w, h);
+      g.addColorStop(0, '#FFE3EC'); g.addColorStop(0.5, '#FFF5D2'); g.addColorStop(1, '#D6EEFF');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+
+      // Decorative circles
+      ctx.fillStyle = 'rgba(255,182,193,0.4)';
+      ctx.beginPath(); ctx.arc(w*0.15, h*0.18, w*0.1, 0, Math.PI*2); ctx.fill();
+      ctx.fillStyle = 'rgba(255,228,150,0.5)';
+      ctx.beginPath(); ctx.arc(w*0.85, h*0.82, w*0.13, 0, Math.PI*2); ctx.fill();
+      ctx.fillStyle = 'rgba(180,220,255,0.5)';
+      ctx.beginPath(); ctx.arc(w*0.92, h*0.15, w*0.07, 0, Math.PI*2); ctx.fill();
+
+      // Cute hearts
+      drawHeart(ctx, w*0.18, h*0.78, w*0.04, 'rgba(255,140,170,0.75)');
+      drawHeart(ctx, w*0.82, h*0.32, w*0.025, 'rgba(255,160,180,0.7)');
+      drawStar(ctx, w*0.12, h*0.55, w*0.025, 'rgba(255,200,100,0.85)');
+      drawStar(ctx, w*0.88, h*0.55, w*0.02, 'rgba(180,200,255,0.85)');
+
+      drawTitleSerif(ctx, msg, w/2, h*0.46, w*0.75, '#7C3858', 700);
+      drawDateBlock(ctx, dateStr, weekStr, w/2, h*0.74, '#9B5276');
+      if (sig) drawSignature(ctx, sig, w/2, h*0.92, '#9B5276');
+      drawCornerMark(ctx, w, h, '#9B5276');
+    }
+  },
+
+  sakura: {
+    name: '櫻花日系', emoji: '🌸',
+    thumb: 'linear-gradient(180deg, #FFF5F5 0%, #FFD9DD 60%, #F5A8B0 100%)',
+    render(ctx, w, h, msg, dateStr, weekStr, sig) {
+      const g = ctx.createLinearGradient(0, 0, 0, h);
+      g.addColorStop(0, '#FFF8F8'); g.addColorStop(0.5, '#FFD8DC'); g.addColorStop(1, '#F1A2AB');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+
+      // Falling petals
+      const petals = [
+        [0.08, 0.15, 0.04, -15], [0.22, 0.32, 0.03, 25], [0.85, 0.18, 0.045, 40],
+        [0.92, 0.45, 0.028, -20], [0.12, 0.6, 0.035, 50], [0.78, 0.7, 0.04, -30],
+        [0.35, 0.85, 0.03, 15], [0.55, 0.25, 0.025, -45]
+      ];
+      petals.forEach(([x,y,s,r]) => drawPetal(ctx, w*x, h*y, w*s, r));
+
+      // Vertical line decoration on right
+      ctx.strokeStyle = 'rgba(150,50,80,0.3)';
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(w*0.92, h*0.15); ctx.lineTo(w*0.92, h*0.85); ctx.stroke();
+
+      // Vertical small label
+      ctx.save();
+      ctx.translate(w*0.96, h*0.5);
+      ctx.rotate(-Math.PI/2);
+      ctx.fillStyle = 'rgba(150,50,80,0.65)';
+      ctx.font = `400 ${w*0.022}px var(--serif), serif`;
+      ctx.textAlign = 'center';
+      ctx.fillText('GOOD MORNING · 早安', 0, 0);
+      ctx.restore();
+
+      drawTitleSerif(ctx, msg, w/2, h*0.42, w*0.75, '#742A3A', 500);
+      drawDateBlock(ctx, dateStr, weekStr, w/2, h*0.68, '#8B3848');
+      if (sig) drawSignature(ctx, sig, w/2, h*0.9, '#8B3848');
+      drawCornerMark(ctx, w, h, '#8B3848');
+    }
+  },
+
+  minimal: {
+    name: '極簡奶茶', emoji: '☕',
+    thumb: 'linear-gradient(135deg, #F5EFE3 0%, #E8DCC4 100%)',
+    render(ctx, w, h, msg, dateStr, weekStr, sig) {
+      ctx.fillStyle = '#F5EFE3'; ctx.fillRect(0, 0, w, h);
+
+      // Subtle paper texture (noise dots)
+      ctx.fillStyle = 'rgba(120,80,40,0.03)';
+      for (let i = 0; i < 1500; i++) {
+        ctx.fillRect(Math.random()*w, Math.random()*h, 1, 1);
+      }
+
+      // Tiny accent line
+      ctx.strokeStyle = '#C8704E';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(w*0.5 - w*0.06, h*0.3); ctx.lineTo(w*0.5 + w*0.06, h*0.3);
+      ctx.stroke();
+
+      // Top tiny label
+      ctx.fillStyle = '#A88861';
+      ctx.font = `400 ${w*0.022}px var(--serif), serif`;
+      ctx.textAlign = 'center';
+      ctx.fillText('M O R N I N G', w/2, h*0.22);
+
+      // Big serif message
+      drawTitleSerif(ctx, msg, w/2, h*0.5, w*0.8, '#3A2D20', 400);
+
+      // Bottom accent
+      ctx.strokeStyle = '#C8704E';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(w*0.42, h*0.66); ctx.lineTo(w*0.58, h*0.66); ctx.stroke();
+
+      drawDateBlock(ctx, dateStr, weekStr, w/2, h*0.74, '#7A6B58');
+
+      if (sig) drawSignature(ctx, sig, w/2, h*0.9, '#7A6B58');
+      drawCornerMark(ctx, w, h, '#7A6B58');
+    }
+  },
+
+  navy: {
+    name: '深夜星光', emoji: '✨',
+    thumb: 'linear-gradient(160deg, #1E2547 0%, #2D3573 60%, #5C4A8A 100%)',
+    render(ctx, w, h, msg, dateStr, weekStr, sig) {
+      const g = ctx.createLinearGradient(0, 0, w, h);
+      g.addColorStop(0, '#1A1F40'); g.addColorStop(0.5, '#2A3168'); g.addColorStop(1, '#4F3D7C');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+
+      // Stars
+      for (let i = 0; i < 80; i++) {
+        const x = Math.random()*w, y = Math.random()*h;
+        const r = Math.random() < 0.85 ? Math.random()*1.2 + 0.4 : Math.random()*2 + 1;
+        ctx.fillStyle = `rgba(255,${230 + Math.random()*25},${180 + Math.random()*40},${0.4 + Math.random()*0.6})`;
+        ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI*2); ctx.fill();
+      }
+
+      // Gold glow rings (decorative)
+      const ringG = ctx.createRadialGradient(w*0.5, h*0.5, w*0.2, w*0.5, h*0.5, w*0.55);
+      ringG.addColorStop(0, 'rgba(212,175,90,0)');
+      ringG.addColorStop(0.7, 'rgba(212,175,90,0.06)');
+      ringG.addColorStop(1, 'rgba(212,175,90,0)');
+      ctx.fillStyle = ringG; ctx.fillRect(0, 0, w, h);
+
+      // Top label gold
+      ctx.fillStyle = '#D4AF5A';
+      ctx.font = `500 ${w*0.022}px var(--serif), serif`;
+      ctx.textAlign = 'center';
+      ctx.fillText('— GOOD MORNING —', w/2, h*0.22);
+
+      // Gold accent line
+      ctx.strokeStyle = '#D4AF5A';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(w*0.42, h*0.3); ctx.lineTo(w*0.58, h*0.3); ctx.stroke();
+
+      drawTitleSerif(ctx, msg, w/2, h*0.48, w*0.78, '#F5E4B5', 500);
+      drawDateBlock(ctx, dateStr, weekStr, w/2, h*0.72, '#D4AF5A');
+
+      if (sig) drawSignature(ctx, sig, w/2, h*0.9, 'rgba(212,175,90,0.85)');
+      drawCornerMark(ctx, w, h, 'rgba(212,175,90,0.85)');
+    }
+  },
+
+  mist: {
+    name: '韓系柔霧', emoji: '🌷',
+    thumb: 'linear-gradient(135deg, #F5DCE0 0%, #D9C2D8 50%, #B5A7C8 100%)',
+    render(ctx, w, h, msg, dateStr, weekStr, sig) {
+      const g = ctx.createLinearGradient(0, 0, w, h);
+      g.addColorStop(0, '#F8E2E5'); g.addColorStop(0.5, '#D8C0D6'); g.addColorStop(1, '#B0A4C6');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+
+      // Big soft blur circles
+      const c1 = ctx.createRadialGradient(w*0.25, h*0.3, 0, w*0.25, h*0.3, w*0.4);
+      c1.addColorStop(0, 'rgba(255,200,210,0.5)'); c1.addColorStop(1, 'rgba(255,200,210,0)');
+      ctx.fillStyle = c1; ctx.fillRect(0, 0, w, h);
+      const c2 = ctx.createRadialGradient(w*0.8, h*0.75, 0, w*0.8, h*0.75, w*0.45);
+      c2.addColorStop(0, 'rgba(180,160,210,0.55)'); c2.addColorStop(1, 'rgba(180,160,210,0)');
+      ctx.fillStyle = c2; ctx.fillRect(0, 0, w, h);
+
+      // Top label
+      ctx.fillStyle = 'rgba(95,75,110,0.7)';
+      ctx.font = `300 ${w*0.022}px var(--sans), sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.fillText('M O R N I N G  ·  안녕', w/2, h*0.22);
+
+      drawTitleSerif(ctx, msg, w/2, h*0.46, w*0.78, '#5A3F70', 400);
+
+      // Soft underline
+      ctx.strokeStyle = 'rgba(90,63,112,0.3)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(w*0.4, h*0.62); ctx.lineTo(w*0.6, h*0.62); ctx.stroke();
+
+      drawDateBlock(ctx, dateStr, weekStr, w/2, h*0.72, '#5A3F70');
+      if (sig) drawSignature(ctx, sig, w/2, h*0.9, '#5A3F70');
+      drawCornerMark(ctx, w, h, '#5A3F70');
+    }
+  },
+
+  forest: {
+    name: '森林療癒', emoji: '🌿',
+    thumb: 'linear-gradient(180deg, #DCE9D5 0%, #94B780 60%, #4F6D4A 100%)',
+    render(ctx, w, h, msg, dateStr, weekStr, sig) {
+      const g = ctx.createLinearGradient(0, 0, 0, h);
+      g.addColorStop(0, '#E8F0DC'); g.addColorStop(0.5, '#A5C28D'); g.addColorStop(1, '#587058');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+
+      // Light beam
+      ctx.fillStyle = 'rgba(255,255,200,0.18)';
+      ctx.beginPath();
+      ctx.moveTo(w*0.7, 0); ctx.lineTo(w*0.95, 0); ctx.lineTo(w*0.4, h); ctx.lineTo(w*0.15, h);
+      ctx.closePath(); ctx.fill();
+
+      // Leaf shapes
+      drawLeaf(ctx, w*0.1, h*0.15, w*0.05, -20, 'rgba(80,110,75,0.55)');
+      drawLeaf(ctx, w*0.88, h*0.25, w*0.06, 35, 'rgba(80,110,75,0.5)');
+      drawLeaf(ctx, w*0.92, h*0.7, w*0.07, -45, 'rgba(60,90,60,0.6)');
+      drawLeaf(ctx, w*0.08, h*0.78, w*0.055, 25, 'rgba(60,90,60,0.55)');
+      drawLeaf(ctx, w*0.18, h*0.92, w*0.04, -10, 'rgba(50,80,55,0.6)');
+
+      // Bokeh dots (light spots)
+      ctx.fillStyle = 'rgba(255,255,210,0.3)';
+      [[0.3,0.18,15],[0.6,0.32,10],[0.78,0.5,18],[0.25,0.5,12],[0.5,0.62,8]].forEach(([x,y,r])=>{
+        ctx.beginPath(); ctx.arc(w*x, h*y, r, 0, Math.PI*2); ctx.fill();
+      });
+
+      drawTitleSerif(ctx, msg, w/2, h*0.45, w*0.78, '#FFFFFF', 600);
+      drawDateBlock(ctx, dateStr, weekStr, w/2, h*0.72, 'rgba(255,255,255,0.95)');
+      if (sig) drawSignature(ctx, sig, w/2, h*0.9, 'rgba(255,255,255,0.9)');
+      drawCornerMark(ctx, w, h, 'rgba(255,255,255,0.85)');
+    }
+  },
+
+  // ============================================================
+  // 6 PHOTO-REALISTIC LANDSCAPES — pure Canvas, no internet, no CORS, always works
+  // ============================================================
+
+  snowDawn: {
+    name: '雪山晨光', emoji: '🏔',
+    thumb: 'linear-gradient(180deg,#F8D5D1 0%,#EFAFB0 28%,#8C7AA8 60%,#4A4E73 100%)',
+    render(ctx, w, h, msg, dateStr, weekStr, sig) {
+      // Sky
+      const sky = ctx.createLinearGradient(0,0,0,h*0.7);
+      sky.addColorStop(0,'#F8D5D1'); sky.addColorStop(0.25,'#F0B5B0');
+      sky.addColorStop(0.55,'#C49DB3'); sky.addColorStop(1,'#4F557A');
+      ctx.fillStyle=sky; ctx.fillRect(0,0,w,h);
+      // Sun glow
+      const sg=ctx.createRadialGradient(w*0.7,h*0.38,0,w*0.7,h*0.38,w*0.45);
+      sg.addColorStop(0,'rgba(255,235,200,0.75)'); sg.addColorStop(0.3,'rgba(255,210,180,0.3)'); sg.addColorStop(1,'rgba(255,200,180,0)');
+      ctx.fillStyle=sg; ctx.fillRect(0,0,w,h);
+      ctx.beginPath(); ctx.arc(w*0.7,h*0.38,w*0.045,0,Math.PI*2); ctx.fillStyle='rgba(255,240,215,0.9)'; ctx.fill();
+      // Far mountains (faded)
+      ctx.fillStyle='rgba(155,150,180,0.6)';
+      ctx.beginPath(); ctx.moveTo(0,h*0.6); ctx.lineTo(w*0.12,h*0.5); ctx.lineTo(w*0.22,h*0.55); ctx.lineTo(w*0.35,h*0.46); ctx.lineTo(w*0.5,h*0.52); ctx.lineTo(w*0.62,h*0.45); ctx.lineTo(w*0.78,h*0.5); ctx.lineTo(w*0.9,h*0.46); ctx.lineTo(w,h*0.52); ctx.lineTo(w,h*0.7); ctx.lineTo(0,h*0.7); ctx.closePath(); ctx.fill();
+      // Mid mountains
+      ctx.fillStyle='rgba(85,80,120,0.92)';
+      ctx.beginPath(); ctx.moveTo(0,h*0.78); ctx.lineTo(w*0.08,h*0.65); ctx.lineTo(w*0.18,h*0.72); ctx.lineTo(w*0.32,h*0.58); ctx.lineTo(w*0.45,h*0.68); ctx.lineTo(w*0.58,h*0.55); ctx.lineTo(w*0.72,h*0.65); ctx.lineTo(w*0.85,h*0.6); ctx.lineTo(w,h*0.7); ctx.lineTo(w,h*0.85); ctx.lineTo(0,h*0.85); ctx.closePath(); ctx.fill();
+      // Snow caps
+      ctx.fillStyle='rgba(248,240,245,0.75)';
+      [[w*0.32,h*0.58,w*0.05],[w*0.58,h*0.55,w*0.055]].forEach(([px,py,sr])=>{
+        ctx.beginPath(); ctx.moveTo(px-sr,py+sr*0.5); ctx.lineTo(px,py); ctx.lineTo(px+sr,py+sr*0.5); ctx.closePath(); ctx.fill();
+      });
+      // Foreground
+      ctx.fillStyle='rgba(50,52,75,0.95)';
+      ctx.beginPath(); ctx.moveTo(0,h); ctx.lineTo(0,h*0.85); ctx.lineTo(w*0.2,h*0.78); ctx.lineTo(w*0.4,h*0.82); ctx.lineTo(w*0.6,h*0.76); ctx.lineTo(w*0.8,h*0.82); ctx.lineTo(w,h*0.78); ctx.lineTo(w,h); ctx.closePath(); ctx.fill();
+      // Mist
+      const mist=ctx.createLinearGradient(0,h*0.62,0,h*0.8); mist.addColorStop(0,'rgba(220,200,210,0)'); mist.addColorStop(0.5,'rgba(220,200,210,0.35)'); mist.addColorStop(1,'rgba(220,200,210,0)');
+      ctx.fillStyle=mist; ctx.fillRect(0,h*0.62,w,h*0.18);
+      // Text
+      ctx.shadowColor='rgba(0,0,0,0.5)'; ctx.shadowBlur=16; ctx.shadowOffsetY=2;
+      drawTitleSerif(ctx,msg,w/2,h*0.25,w*0.8,'#FFFFFF',600);
+      ctx.shadowColor='transparent'; ctx.shadowBlur=0; ctx.shadowOffsetY=0;
+      drawDateBlock(ctx,dateStr,weekStr,w/2,h*0.92,'rgba(255,255,255,0.96)');
+      if(sig) drawSignature(ctx,sig,w/2,h*0.97,'rgba(255,255,255,0.85)');
+      drawCornerMark(ctx,w,h,'rgba(255,255,255,0.75)');
+    }
+  },
+
+  mistyMeadow: {
+    name: '晨間原野', emoji: '🌾',
+    thumb: 'linear-gradient(180deg,#DCE4D0 0%,#BFC9A6 35%,#8DA37C 70%,#5C6E50 100%)',
+    render(ctx, w, h, msg, dateStr, weekStr, sig) {
+      // Sky
+      const sky=ctx.createLinearGradient(0,0,0,h*0.55);
+      sky.addColorStop(0,'#E8EBD8'); sky.addColorStop(0.5,'#D5DAC0'); sky.addColorStop(1,'#BAC8A0');
+      ctx.fillStyle=sky; ctx.fillRect(0,0,w,h*0.55);
+      // Sun glow
+      const sg=ctx.createRadialGradient(w*0.35,h*0.35,0,w*0.35,h*0.35,w*0.55);
+      sg.addColorStop(0,'rgba(255,250,225,0.9)'); sg.addColorStop(0.15,'rgba(255,240,200,0.5)'); sg.addColorStop(0.5,'rgba(255,235,200,0.15)'); sg.addColorStop(1,'rgba(255,235,200,0)');
+      ctx.fillStyle=sg; ctx.fillRect(0,0,w,h);
+      ctx.beginPath(); ctx.arc(w*0.35,h*0.35,w*0.06,0,Math.PI*2); ctx.fillStyle='rgba(255,250,230,0.92)'; ctx.fill();
+      // Distant hills
+      ctx.fillStyle='rgba(155,170,135,0.55)';
+      ctx.beginPath(); ctx.moveTo(0,h*0.55); ctx.bezierCurveTo(w*0.2,h*0.48,w*0.4,h*0.52,w*0.6,h*0.5); ctx.bezierCurveTo(w*0.75,h*0.49,w*0.9,h*0.53,w,h*0.5); ctx.lineTo(w,h*0.62); ctx.lineTo(0,h*0.62); ctx.closePath(); ctx.fill();
+      // Mid hills
+      ctx.fillStyle='rgba(120,140,98,0.85)';
+      ctx.beginPath(); ctx.moveTo(0,h*0.7); ctx.bezierCurveTo(w*0.15,h*0.6,w*0.3,h*0.66,w*0.5,h*0.62); ctx.bezierCurveTo(w*0.7,h*0.58,w*0.85,h*0.65,w,h*0.6); ctx.lineTo(w,h*0.75); ctx.lineTo(0,h*0.75); ctx.closePath(); ctx.fill();
+      // Mist
+      const mist=ctx.createLinearGradient(0,h*0.55,0,h*0.8); mist.addColorStop(0,'rgba(240,235,220,0)'); mist.addColorStop(0.4,'rgba(240,235,220,0.7)'); mist.addColorStop(1,'rgba(240,235,220,0.1)');
+      ctx.fillStyle=mist; ctx.fillRect(0,h*0.55,w,h*0.25);
+      // Meadow
+      const meadow=ctx.createLinearGradient(0,h*0.7,0,h);
+      meadow.addColorStop(0,'#8FA873'); meadow.addColorStop(1,'#5A6E48');
+      ctx.fillStyle=meadow; ctx.fillRect(0,h*0.7,w,h*0.3);
+      // Grass strokes
+      ctx.strokeStyle='rgba(70,90,55,0.4)'; ctx.lineWidth=1;
+      for(let i=0;i<50;i++){const x=Math.random()*w,y=h*0.72+Math.random()*h*0.26; ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x,y-6-Math.random()*8); ctx.stroke();}
+      // Light rays
+      ctx.save(); ctx.globalCompositeOperation='screen';
+      for(let i=0;i<3;i++){
+        const rg=ctx.createLinearGradient(w*0.35,h*0.35,w*0.35-w*0.25+i*w*0.15,h);
+        rg.addColorStop(0,'rgba(255,250,220,0.2)'); rg.addColorStop(1,'rgba(255,250,220,0)');
+        ctx.fillStyle=rg; ctx.beginPath(); ctx.moveTo(w*0.33,h*0.35); ctx.lineTo(w*0.37,h*0.35); ctx.lineTo(w*0.35-w*0.2+i*w*0.18,h); ctx.lineTo(w*0.35-w*0.3+i*w*0.18,h); ctx.closePath(); ctx.fill();
+      }
+      ctx.restore();
+      // Text
+      ctx.shadowColor='rgba(0,0,0,0.4)'; ctx.shadowBlur=14; ctx.shadowOffsetY=2;
+      drawTitleSerif(ctx,msg,w/2,h*0.2,w*0.8,'#FFFFFF',700);
+      ctx.shadowColor='transparent'; ctx.shadowBlur=0; ctx.shadowOffsetY=0;
+      drawDateBlock(ctx,dateStr,weekStr,w/2,h*0.88,'rgba(255,255,255,0.97)');
+      if(sig) drawSignature(ctx,sig,w/2,h*0.96,'rgba(255,255,255,0.85)');
+      drawCornerMark(ctx,w,h,'rgba(255,255,255,0.75)');
+    }
+  },
+
+  goldenPeaks: {
+    name: '黃金山景', emoji: '🌄',
+    thumb: 'linear-gradient(180deg,#FFE0A3 0%,#FFB670 35%,#C9794A 70%,#6E3F26 100%)',
+    render(ctx, w, h, msg, dateStr, weekStr, sig) {
+      // Sky
+      const sky=ctx.createLinearGradient(0,0,0,h*0.6);
+      sky.addColorStop(0,'#FFE5B0'); sky.addColorStop(0.3,'#FFC585'); sky.addColorStop(0.7,'#E89665'); sky.addColorStop(1,'#A65637');
+      ctx.fillStyle=sky; ctx.fillRect(0,0,w,h);
+      // Sun glow
+      const sg=ctx.createRadialGradient(w*0.5,h*0.5,0,w*0.5,h*0.5,w*0.6);
+      sg.addColorStop(0,'rgba(255,245,210,0.85)'); sg.addColorStop(0.2,'rgba(255,225,180,0.4)'); sg.addColorStop(1,'rgba(255,225,180,0)');
+      ctx.fillStyle=sg; ctx.fillRect(0,0,w,h);
+      ctx.beginPath(); ctx.arc(w*0.5,h*0.5,w*0.04,0,Math.PI*2); ctx.fillStyle='rgba(255,245,220,0.95)'; ctx.fill();
+      // Lens flares
+      ctx.fillStyle='rgba(255,235,180,0.45)';
+      [[0.35,0.42,0.012],[0.62,0.55,0.015],[0.28,0.6,0.008]].forEach(([x,y,r])=>{ctx.beginPath();ctx.arc(w*x,h*y,w*r,0,Math.PI*2);ctx.fill();});
+      // Far mountains
+      ctx.fillStyle='rgba(170,110,75,0.85)';
+      ctx.beginPath(); ctx.moveTo(0,h*0.62); ctx.lineTo(w*0.15,h*0.52); ctx.lineTo(w*0.28,h*0.58); ctx.lineTo(w*0.4,h*0.5); ctx.lineTo(w*0.55,h*0.55); ctx.lineTo(w*0.7,h*0.48); ctx.lineTo(w*0.85,h*0.54); ctx.lineTo(w,h*0.5); ctx.lineTo(w,h*0.7); ctx.lineTo(0,h*0.7); ctx.closePath(); ctx.fill();
+      // Mid mountains
+      ctx.fillStyle='rgba(110,70,50,0.95)';
+      ctx.beginPath(); ctx.moveTo(0,h*0.78); ctx.lineTo(w*0.1,h*0.68); ctx.lineTo(w*0.22,h*0.72); ctx.lineTo(w*0.38,h*0.62); ctx.lineTo(w*0.52,h*0.7); ctx.lineTo(w*0.65,h*0.6); ctx.lineTo(w*0.78,h*0.68); ctx.lineTo(w*0.92,h*0.62); ctx.lineTo(w,h*0.7); ctx.lineTo(w,h*0.85); ctx.lineTo(0,h*0.85); ctx.closePath(); ctx.fill();
+      // Rim light on peaks
+      ctx.strokeStyle='rgba(255,220,160,0.7)'; ctx.lineWidth=2.5;
+      ctx.beginPath(); ctx.moveTo(w*0.1,h*0.68); ctx.lineTo(w*0.22,h*0.72); ctx.lineTo(w*0.38,h*0.62); ctx.lineTo(w*0.52,h*0.7); ctx.lineTo(w*0.65,h*0.6); ctx.lineTo(w*0.78,h*0.68); ctx.lineTo(w*0.92,h*0.62); ctx.stroke();
+      // Dark foreground
+      ctx.fillStyle='rgba(45,30,22,0.95)';
+      ctx.beginPath(); ctx.moveTo(0,h); ctx.lineTo(0,h*0.85); ctx.lineTo(w*0.18,h*0.8); ctx.lineTo(w*0.35,h*0.84); ctx.lineTo(w*0.55,h*0.78); ctx.lineTo(w*0.75,h*0.82); ctx.lineTo(w,h*0.78); ctx.lineTo(w,h); ctx.closePath(); ctx.fill();
+      // Text
+      ctx.shadowColor='rgba(0,0,0,0.3)'; ctx.shadowBlur=12; ctx.shadowOffsetY=2;
+      drawTitleSerif(ctx,msg,w/2,h*0.22,w*0.8,'#FFFFFF',700);
+      ctx.shadowColor='transparent'; ctx.shadowBlur=0; ctx.shadowOffsetY=0;
+      drawDateBlock(ctx,dateStr,weekStr,w/2,h*0.92,'rgba(255,235,200,0.97)');
+      if(sig) drawSignature(ctx,sig,w*0.85,h*0.97,'rgba(255,235,200,0.85)','right');
+      drawCornerMark(ctx,w,h,'rgba(255,225,180,0.75)');
+    }
+  },
+
+  oceanSunrise: {
+    name: '海邊日出', emoji: '🌅',
+    thumb: 'linear-gradient(180deg,#FFE5C4 0%,#FFA987 35%,#5E84A8 65%,#2A4566 100%)',
+    render(ctx, w, h, msg, dateStr, weekStr, sig) {
+      // Sky
+      const sky=ctx.createLinearGradient(0,0,0,h*0.55);
+      sky.addColorStop(0,'#FFE5C4'); sky.addColorStop(0.3,'#FFCDA5'); sky.addColorStop(0.7,'#FFA987'); sky.addColorStop(1,'#E88566');
+      ctx.fillStyle=sky; ctx.fillRect(0,0,w,h*0.55);
+      // Sun glow
+      const sg=ctx.createRadialGradient(w*0.5,h*0.43,0,w*0.5,h*0.43,w*0.4);
+      sg.addColorStop(0,'rgba(255,240,200,0.95)'); sg.addColorStop(0.3,'rgba(255,210,160,0.5)'); sg.addColorStop(1,'rgba(255,210,160,0)');
+      ctx.fillStyle=sg; ctx.fillRect(0,0,w,h*0.7);
+      ctx.beginPath(); ctx.arc(w*0.5,h*0.43,w*0.055,0,Math.PI*2); ctx.fillStyle='rgba(255,240,210,0.95)'; ctx.fill();
+      // Clouds
+      ctx.fillStyle='rgba(255,200,180,0.45)';
+      [[0.15,0.2,0.08],[0.78,0.28,0.06],[0.35,0.14,0.05]].forEach(([x,y,s])=>drawCloud(ctx,w*x,h*y,w*s));
+      // Ocean
+      const ocean=ctx.createLinearGradient(0,h*0.55,0,h);
+      ocean.addColorStop(0,'#6E89A8'); ocean.addColorStop(0.3,'#4A6280'); ocean.addColorStop(1,'#2A3D5A');
+      ctx.fillStyle=ocean; ctx.fillRect(0,h*0.55,w,h*0.45);
+      // Sun reflection
+      const refl=ctx.createLinearGradient(0,h*0.55,0,h);
+      refl.addColorStop(0,'rgba(255,235,200,0.85)'); refl.addColorStop(0.3,'rgba(255,210,170,0.5)'); refl.addColorStop(0.7,'rgba(255,200,160,0.15)'); refl.addColorStop(1,'rgba(255,200,160,0)');
+      ctx.fillStyle=refl;
+      ctx.beginPath(); ctx.moveTo(w*0.48,h*0.55); ctx.lineTo(w*0.52,h*0.55); ctx.lineTo(w*0.7,h); ctx.lineTo(w*0.3,h); ctx.closePath(); ctx.fill();
+      // Water ripples
+      ctx.strokeStyle='rgba(255,255,255,0.15)'; ctx.lineWidth=1;
+      for(let i=0;i<14;i++){const y=h*0.58+i*h*0.033; ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(w,y); ctx.stroke();}
+      // Shimmer lines
+      ctx.strokeStyle='rgba(255,240,210,0.5)'; ctx.lineWidth=1.5;
+      for(let i=0;i<8;i++){const y=h*0.62+i*h*0.044; const dx=w*(0.03+i*0.02); ctx.beginPath(); ctx.moveTo(w*0.5-dx,y); ctx.lineTo(w*0.5+dx,y); ctx.stroke();}
+      // Text
+      ctx.shadowColor='rgba(0,0,0,0.4)'; ctx.shadowBlur=14; ctx.shadowOffsetY=2;
+      drawTitleSerif(ctx,msg,w/2,h*0.2,w*0.8,'#FFFFFF',700);
+      ctx.shadowColor='transparent'; ctx.shadowBlur=0; ctx.shadowOffsetY=0;
+      drawDateBlock(ctx,dateStr,weekStr,w/2,h*0.88,'rgba(255,255,255,0.97)');
+      if(sig) drawSignature(ctx,sig,w/2,h*0.96,'rgba(255,255,255,0.85)');
+      drawCornerMark(ctx,w,h,'rgba(255,255,255,0.75)');
+    }
+  },
+
+  warmWindow: {
+    name: '暖陽窗景', emoji: '🪴',
+    thumb: 'linear-gradient(135deg,#F8E8D0 0%,#F0CDA0 50%,#C99A6F 100%)',
+    render(ctx, w, h, msg, dateStr, weekStr, sig) {
+      // Warm interior
+      const bg=ctx.createLinearGradient(0,0,w,h);
+      bg.addColorStop(0,'#F5E5C8'); bg.addColorStop(0.5,'#E8C9A0'); bg.addColorStop(1,'#B8855A');
+      ctx.fillStyle=bg; ctx.fillRect(0,0,w,h);
+      // Window light beam (upper-left → lower-right)
+      ctx.save(); ctx.globalCompositeOperation='screen';
+      const beam=ctx.createLinearGradient(0,0,w*0.7,h*0.7);
+      beam.addColorStop(0,'rgba(255,250,225,0.85)'); beam.addColorStop(0.4,'rgba(255,245,215,0.4)'); beam.addColorStop(1,'rgba(255,245,215,0)');
+      ctx.fillStyle=beam; ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(w*0.4,0); ctx.lineTo(w*0.85,h); ctx.lineTo(0,h); ctx.closePath(); ctx.fill();
+      ctx.restore();
+      // Window frame hint (right side silhouette)
+      ctx.fillStyle='rgba(120,80,50,0.15)'; ctx.fillRect(w*0.78,0,w*0.04,h*0.65); ctx.fillRect(w*0.78,h*0.32,w*0.22,w*0.04);
+      // Pane glow
+      const pane=ctx.createRadialGradient(w*0.88,h*0.18,0,w*0.88,h*0.18,w*0.25);
+      pane.addColorStop(0,'rgba(255,250,220,0.55)'); pane.addColorStop(1,'rgba(255,250,220,0)');
+      ctx.fillStyle=pane; ctx.fillRect(w*0.6,0,w*0.4,h*0.55);
+      // Plant leaves (right side)
+      const lc='rgba(75,105,68,0.88)';
+      ctx.save(); ctx.translate(w*0.82,h*0.75);
+      for(let i=0;i<5;i++){ctx.save();ctx.rotate((i-2)*0.35);ctx.fillStyle=lc;ctx.beginPath();ctx.ellipse(0,-h*0.13,w*0.024,h*0.1,0,0,Math.PI*2);ctx.fill();ctx.restore();}
+      ctx.restore();
+      // Pot silhouette
+      ctx.fillStyle='rgba(140,90,55,0.85)';
+      ctx.beginPath(); ctx.moveTo(w*0.74,h*0.88); ctx.lineTo(w*0.9,h*0.88); ctx.lineTo(w*0.88,h); ctx.lineTo(w*0.76,h); ctx.closePath(); ctx.fill();
+      // Dust motes
+      ctx.fillStyle='rgba(255,250,225,0.55)';
+      for(let i=0;i<28;i++){ctx.beginPath();ctx.arc(Math.random()*w*0.65,Math.random()*h*0.8,Math.random()*1.5+0.5,0,Math.PI*2);ctx.fill();}
+      // Text (dark, centered on warm left portion)
+      drawTitleSerif(ctx,msg,w*0.42,h*0.48,w*0.65,'#4A2F1A',600);
+      drawDateBlock(ctx,dateStr,weekStr,w*0.42,h*0.74,'#6E4A2E');
+      if(sig) drawSignature(ctx,sig,w*0.42,h*0.91,'#6E4A2E');
+      drawCornerMark(ctx,w,h,'#6E4A2E');
+    }
+  },
+
+  lakeMirror: {
+    name: '湖景倒影', emoji: '🏞',
+    thumb: 'linear-gradient(180deg,#C8DCEA 0%,#A5C2D6 30%,#5F8AAC 50%,#3D6688 100%)',
+    render(ctx, w, h, msg, dateStr, weekStr, sig) {
+      // Sky
+      const sky=ctx.createLinearGradient(0,0,0,h*0.5);
+      sky.addColorStop(0,'#D8E5F0'); sky.addColorStop(0.5,'#B5C8DE'); sky.addColorStop(1,'#8AA8C8');
+      ctx.fillStyle=sky; ctx.fillRect(0,0,w,h*0.5);
+      // Soft dawn glow
+      const sg=ctx.createRadialGradient(w*0.5,h*0.42,0,w*0.5,h*0.42,w*0.5);
+      sg.addColorStop(0,'rgba(255,235,200,0.55)'); sg.addColorStop(0.3,'rgba(255,220,190,0.25)'); sg.addColorStop(1,'rgba(255,220,190,0)');
+      ctx.fillStyle=sg; ctx.fillRect(0,0,w,h*0.55);
+      // Mountain path helper
+      const drawMountains=(yOff,alpha)=>{
+        ctx.globalAlpha=alpha;
+        ctx.beginPath(); ctx.moveTo(0,h*0.5+yOff); ctx.lineTo(w*0.1,h*0.42+yOff); ctx.lineTo(w*0.22,h*0.46+yOff); ctx.lineTo(w*0.35,h*0.4+yOff); ctx.lineTo(w*0.5,h*0.43+yOff); ctx.lineTo(w*0.65,h*0.38+yOff); ctx.lineTo(w*0.78,h*0.44+yOff); ctx.lineTo(w*0.9,h*0.41+yOff); ctx.lineTo(w,h*0.45+yOff); ctx.lineTo(w,h*0.5+yOff); ctx.lineTo(0,h*0.5+yOff); ctx.closePath(); ctx.fill();
+        ctx.globalAlpha=1;
+      };
+      ctx.fillStyle='rgba(85,110,140,0.9)'; drawMountains(0,1);
+      // Lake
+      const lake=ctx.createLinearGradient(0,h*0.5,0,h);
+      lake.addColorStop(0,'#7B9CB8'); lake.addColorStop(0.4,'#5876A0'); lake.addColorStop(1,'#385878');
+      ctx.fillStyle=lake; ctx.fillRect(0,h*0.5,w,h*0.5);
+      // Reflection (flipped mountains)
+      ctx.save(); ctx.scale(1,-1); ctx.translate(0,-h); ctx.fillStyle='rgba(70,95,125,0.95)'; drawMountains(h-h*1,0.45); ctx.restore();
+      // Sky reflection gradient
+      const sr=ctx.createLinearGradient(0,h*0.5,0,h*0.7);
+      sr.addColorStop(0,'rgba(216,229,240,0.45)'); sr.addColorStop(1,'rgba(216,229,240,0)');
+      ctx.fillStyle=sr; ctx.fillRect(0,h*0.5,w,h*0.2);
+      // Water ripples
+      ctx.strokeStyle='rgba(255,255,255,0.18)'; ctx.lineWidth=1;
+      for(let i=0;i<14;i++){const y=h*0.52+i*h*0.034; ctx.beginPath(); for(let x=0;x<w;x+=35+Math.random()*30){ctx.moveTo(x,y);ctx.lineTo(x+12+Math.random()*18,y);} ctx.stroke();}
+      // Horizon mist
+      const hm=ctx.createLinearGradient(0,h*0.46,0,h*0.54);
+      hm.addColorStop(0,'rgba(220,228,236,0)'); hm.addColorStop(0.5,'rgba(220,228,236,0.5)'); hm.addColorStop(1,'rgba(220,228,236,0)');
+      ctx.fillStyle=hm; ctx.fillRect(0,h*0.46,w,h*0.08);
+      // Text
+      ctx.shadowColor='rgba(0,0,0,0.35)'; ctx.shadowBlur=14; ctx.shadowOffsetY=2;
+      drawTitleSerif(ctx,msg,w/2,h*0.22,w*0.8,'#FFFFFF',600);
+      ctx.shadowColor='transparent'; ctx.shadowBlur=0; ctx.shadowOffsetY=0;
+      drawDateBlock(ctx,dateStr,weekStr,w/2,h*0.88,'rgba(255,255,255,0.97)');
+      if(sig) drawSignature(ctx,sig,w/2,h*0.96,'rgba(255,255,255,0.85)');
+      drawCornerMark(ctx,w,h,'rgba(255,255,255,0.75)');
+    }
+  }
+};
+
+const TPL_KEYS = Object.keys(TEMPLATES);
+
+// ============================================================
+// 📷 晨間問候圖片庫 — 依風格分類
+// 多元圖片來源（全部直連 CDN，皆支援 CORS 與 crossOrigin='anonymous'）
+// → 可在 HTTPS（如 GitHub Pages）環境下正常使用 canvas.toBlob()
+//   下載、複製到剪貼簿、Web Share API 分享。
+// ============================================================
+
+// ─── 來源 1：Unsplash CDN ─────────────────────────────────────
+// 取得 ID：unsplash.com 該圖網址末段 (https://unsplash.com/photos/{slug-12345abc})
+// 用法： _mk('圖名', '1470770841072-f978cf4d019e')
+const _U  = id => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1080&q=85`;
+const _UT = id => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=320&q=70`;
+const _mk = (name, id) => ({ name, id, url: _U(id), thumb: _UT(id), source: 'unsplash' });
+
+// ─── 來源 2：Pexels CDN ───────────────────────────────────────
+// 取得 ID：pexels.com 該圖網址末段純數字 (pexels.com/photo/abc-1108099/)
+// 用法： _P('小狗', 1108099)
+const _P = (name, id) => ({
+  name, id: String(id), source: 'pexels',
+  url:   `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=1080`,
+  thumb: `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=320`
+});
+
+// ─── 來源 3：StockSnap CDN ────────────────────────────────────
+// 取得 slug：stocksnap.io/photo/{slug} 末段字母數字 (如 X4YPB7CMV0)
+// 用法： _S('森林', 'X4YPB7CMV0')
+const _S = (name, slug) => ({
+  name, id: slug, source: 'stocksnap',
+  url:   `https://cdn.stocksnap.io/img-thumbs/960w/${slug}.jpg`,
+  thumb: `https://cdn.stocksnap.io/img-thumbs/280w/${slug}.jpg`
+});
+
+// ─── 來源 4：任何完整 URL ─────────────────────────────────────
+// 給「自訂圖片」功能用，或您手上有 Pixabay/Flickr 等網站找到的完整圖片網址
+// 注意：該圖片網址必須支援 CORS，否則下載/分享功能不可用
+const _ANY = (name, fullUrl) => ({
+  name, id: fullUrl, source: 'custom',
+  url: fullUrl, thumb: fullUrl
+});
+
+// ─── 8 大主題分類，共 80+ 張精選晨間問候圖 ────────────────────
+const PHOTO_CATEGORIES = {
+  morning: {
+    name: '早安晨光', emoji: '☀️',
+    desc: '溫暖的日出與清晨光線',
+    photos: [
+      _mk('金色日出',     '1470770841072-f978cf4d019e'),
+      _mk('黃金天際',     '1490682143684-14369e18dce8'),
+      _mk('雲海金時',     '1503803548695-c2a7b4a5b875'),
+      _mk('丘陵黃昏',     '1484766280341-87861644c80d'),
+      _mk('地平晚霞',     '1494548162494-384bba4ab999'),
+      _mk('清晨柔光',     '1495616811223-4d98c6e9c869'),
+      _mk('黎明山脊',     '1500534623283-312aade485b7'),
+      _mk('粉霞雪峰',     '1514241516423-6c0a5e031aa2'),
+      _mk('朝霞滿天',     '1473496169904-658ba7c44d8a'),
+      _mk('晨光森林',     '1418065460487-3e41a6c84dc5'),
+      // Pexels 來源
+      _P('日出山影',      33109),
+      _P('晨曦光暈',      1054218),
+      _P('破曉景緻',      36717),
+      _P('清晨田野',      414102),
+      // StockSnap 來源
+      _S('黎明海邊',      'XQUL7XX2RA'),
+    ]
+  },
+
+  flowers: {
+    name: '花卉物語', emoji: '🌸',
+    desc: '溫柔的花朵與花海',
+    photos: [
+      _mk('粉色櫻花',     '1490750967868-a8bcbaf26e8a'),
+      _mk('紫色薰衣草',   '1471943311424-646960669fbc'),
+      _mk('春日白花田',   '1475113548554-5a36f1f523d6'),
+      _mk('粉嫩花瓣',     '1496062031456-07b8f162a322'),
+      _mk('野花盛開',     '1465146344425-f00d5f5c8f07'),
+      _mk('溫柔花朵',     '1486611367184-17759508999c'),
+      _mk('陽光花海',     '1453904300235-0f2f60b15b5d'),
+      _mk('雛菊微笑',     '1455659817273-f96807779a8a'),
+      _mk('粉色花蕊',     '1469259943454-aa100abba749'),
+      _mk('白色繡球',     '1502082553048-f009c37129b9'),
+      _mk('粉牡丹',       '1487070183336-b863922373d4'),
+      _mk('紫色花海',     '1531297484001-80022131f5a1'),
+      _mk('黃色雛菊',     '1487530811176-3780de880c2d'),
+      _mk('向日葵田',     '1496661269814-a841e78df103'),
+      _mk('粉紅櫻花',     '1597848212624-a19eb35e2651'),
+      _mk('白色花叢',     '1457089328389-15adaf18a4d2'),
+      _mk('鬱金香田',     '1465184610174-1ae1da0d2bd9'),
+      _mk('粉色花瓣',     '1556767576-cf0a4a80a4f7'),
+      _mk('紅色玫瑰',     '1561181286-d3fee7d55364'),
+      _mk('混色花束',     '1414837873574-2f4cbe5d8c4f'),
+      _mk('野菊花',       '1426170042593-200f250dc89a'),
+      _mk('夢幻花園',     '1490604001847-b712b0c2f967'),
+      // Pexels 來源
+      _P('粉色花海',      56866),
+      _P('鮮豔花叢',      1133957),
+      _P('向日葵田',      1408221),
+      _P('白色花朵',      462030),
+      _P('黃色雛菊',      36717),
+      // StockSnap 來源
+      _S('紫色花田',      '5GBYYCEJ44'),
+    ]
+  },
+
+  landscape: {
+    name: '自然風景', emoji: '🏞️',
+    desc: '療癒的山水景緻',
+    photos: [
+      _mk('山嵐晨霧',     '1518895949257-7621c3c786d7'),
+      _mk('靜水沉思',     '1490730141103-6cac27aaab94'),
+      _mk('雲下湖光',     '1420136390439-1482fc2ce4b9'),
+      _mk('雲下樹影',     '1470252649378-9c29740c9fa8'),
+      _mk('湖畔倒影',     '1465056836041-7f43ac27dcb5'),
+      _mk('山頂雲海',     '1506905925346-21bda4d32df4'),
+      _mk('遼闊山巒',     '1441974231531-c6227db76b6e'),
+      _mk('草原無邊',     '1500382017468-9049fed747ef'),
+      _mk('峽谷溪水',     '1469474968028-56623f02e42e'),
+      _mk('白雲青山',     '1444090542259-0af8fa96557e'),
+      // Pexels 來源
+      _P('壯麗山脈',      414612),
+      _P('湖光山色',      1366913),
+      _P('晨霧山林',      158063),
+      _P('翠綠田野',      1559825),
+    ]
+  },
+
+  ocean: {
+    name: '海邊清晨', emoji: '🌊',
+    desc: '寧靜的海洋與沙灘',
+    photos: [
+      _mk('浪花拍岸',     '1475924156734-496f6cac6ec1'),
+      _mk('金色水光',     '1414609245224-afa02bfb3fda'),
+      _mk('飛鳥海景',     '1575388913236-67fa448091a0'),
+      _mk('海邊日出',     '1507525428034-b723cf961d3e'),
+      _mk('湛藍海岸',     '1439405326854-014607f694d7'),
+      _mk('海天一線',     '1471922694854-ff1b63b20054'),
+      _mk('沙灘腳印',     '1519046904884-53103b34b206'),
+      _mk('熱帶海島',     '1507525428034-b723cf961d3e'),
+      // Pexels 來源
+      _P('蔚藍海洋',      1032650),
+      _P('海岸波浪',      189349),
+      _P('海邊岩石',      1112048),
+      _P('海平面晨光',    1295138),
+    ]
+  },
+
+  forest: {
+    name: '山林療癒', emoji: '🌲',
+    desc: '清新的綠意與森林',
+    photos: [
+      _mk('植物逆光',     '1510784722466-f2aa9c52fff6'),
+      _mk('陽光林間',     '1448375240586-882707db888b'),
+      _mk('陽光葉影',     '1426604966848-d7adac402bff'),
+      _mk('靜謐森林',     '1542273917363-3b1817f69a2d'),
+      _mk('溪邊綠意',     '1441974231531-c6227db76b6e'),
+      _mk('青苔小徑',     '1502082553048-f009c37129b9'),
+      _mk('林梢晨曦',     '1473773508845-188df298d2d1'),
+      _mk('竹林小徑',     '1492496913980-501348b61469'),
+      // Pexels 來源
+      _P('森林光束',      38136),
+      _P('林間小路',      268533),
+      _P('蓊鬱叢林',      1761279),
+      _P('森林晨霧',      414102),
+    ]
+  },
+
+  cute: {
+    name: '可愛動物', emoji: '🐱',
+    desc: '療癒的萌寵',
+    photos: [
+      _mk('小貓咪',       '1518791841217-8f162f1e1131'),
+      _mk('黃金獵犬',     '1552053831-71594a27632d'),
+      _mk('柴犬微笑',     '1583337130417-3346a1be7dee'),
+      _mk('白色小貓',     '1574144611937-0df059b5ef3e'),
+      _mk('小白兔',       '1535241749838-299277b6305f'),
+      _mk('熊貓寶寶',     '1566127992631-137a642a90f4'),
+      _mk('小狗探頭',     '1587300003388-59208cc962cb'),
+      _mk('橘貓打盹',     '1561948955-570b270e7c36'),
+      _mk('哈士奇',       '1605568427561-40dd23c2acea'),
+      _mk('松鼠覓食',     '1507666664345-c49223375e33'),
+      _mk('博美犬',       '1450778869180-41d0601e046e'),
+      _mk('比格犬',       '1505628346881-b72b27e84530'),
+      _mk('小貓圓眼',     '1573865526739-10659fec78a5'),
+      _mk('柯基犬',       '1591946614720-90a587da4a36'),
+      _mk('幼犬奔跑',     '1546975490-e8b92a360b24'),
+      _mk('灰貓躺臥',     '1543852786-1cf6624b9987'),
+      _mk('黃金幼犬',     '1561037404-bd2cbf3b94e0'),
+      _mk('小狗微笑',     '1548199973-03cce0bbc87b'),
+      _mk('貓咪窩睡',     '1494256997604-768d1f608cac'),
+      _mk('小狗草地',     '1583511655857-d19b40a7a54e'),
+      _mk('白貓藍眼',     '1571566882372-1598d88abd90'),
+      _mk('倉鼠捧食',     '1425082661705-1834bfd09dca'),
+      _mk('英短藍貓',     '1592194996308-7b43878e84a6'),
+      _mk('幼犬抬頭',     '1601758125946-6ec2ef64daf8'),
+      // Pexels 來源
+      _P('黃金獵犬笑',    1108099),
+      _P('小狗草地玩',    1851164),
+      _P('貓咪窩睡',      1170986),
+      _P('幼犬可愛',      2253275),
+      _P('白貓凝視',      45201),
+      _P('哈士奇雪地',    1037474),
+      // StockSnap 來源
+      _S('貓咪躺臥',      'PXNTJQOHEK'),
+    ]
+  },
+
+  painting: {
+    name: '油畫意境', emoji: '🎨',
+    desc: '富有畫意的風景',
+    photos: [
+      _mk('夢幻薰衣草',   '1499002238440-d264edd596ec'),
+      _mk('印象派山谷',   '1487147264018-f937fba0c817'),
+      _mk('柔光麥田',     '1444090542259-0af8fa96557e'),
+      _mk('粉紫天空',     '1499529112087-3cb3b73cec95'),
+      _mk('夢中花田',     '1431794062232-2a99a5431c6c'),
+      _mk('莫內荷塘',     '1538137524007-21e48fa42f3f'),
+      _mk('印象黃昏',     '1518621012420-8ab10887ce4b'),
+      _mk('水彩晚霞',     '1419637995714-7df1d20efa3e'),
+      _mk('粉色雲彩',     '1490604001847-b712b0c2f967'),
+      _mk('柔焦花叢',     '1490750967868-a8bcbaf26e8a'),
+      // Pexels 來源
+      _P('印象黃昏',      1212693),
+      _P('夢幻紫色天',    1054218),
+      _P('柔光花田',      36717),
+    ]
+  },
+
+  // ── 藝術家水彩油畫風格（柔焦花卉、夢幻畫意攝影）─────────────
+  watercolor: {
+    name: '藝術家水彩油畫', emoji: '🖼️',
+    desc: '水彩花卉與夢幻畫境',
+    photos: [
+      _mk('夢幻紫藤',       '1518837695005-2083093ee35b'),
+      _mk('印象派薰衣草',   '1503551723145-6c040742065b'),
+      _mk('柔焦玫瑰',       '1457089328389-15adaf18a4d2'),
+      _mk('水彩繡球',       '1502082553048-f009c37129b9'),
+      _mk('粉霧花叢',       '1490604001847-b712b0c2f967'),
+      _mk('油畫向日葵',     '1496661269814-a841e78df103'),
+      _mk('柔光櫻花',       '1490750967868-a8bcbaf26e8a'),
+      _mk('夢中花田',       '1431794062232-2a99a5431c6c'),
+      _mk('印象芍藥',       '1486611367184-17759508999c'),
+      _mk('粉嫩水彩',       '1465184610174-1ae1da0d2bd9'),
+      _mk('夕陽油畫',       '1419637995714-7df1d20efa3e'),
+      _mk('莫內荷塘感',     '1538137524007-21e48fa42f3f'),
+      _mk('粉雲水彩',       '1499529112087-3cb3b73cec95'),
+      _mk('柔焦秋葉',       '1444090542259-0af8fa96557e'),
+      // Pexels 來源
+      _P('水彩花蕊',        1379636),
+      _P('印象派花田',      4546026),
+      _P('柔光夢境',        1133957),
+    ]
+  },
+
+  // ── 山林情境（水墨山水、東方山林意境攝影）───────────────────
+  chinese: {
+    name: '山林情境', emoji: '⛩️',
+    desc: '水墨山水・東方意境',
+    photos: [
+      _mk('雲海仙境',         '1506905925346-21bda4d32df4'),
+      _mk('黃山雲霧',         '1546069901-ba9599a7e63c'),
+      _mk('竹林深處',         '1492496913980-501348b61469'),
+      _mk('煙雨青山',         '1518895949257-7621c3c786d7'),
+      _mk('荷塘清晨',         '1593436625103-79024a7eaaff'),
+      _mk('遠山如黛',         '1500382017468-9049fed747ef'),
+      _mk('禪意山水',         '1473773508845-188df298d2d1'),
+      _mk('水墨山影',         '1542640244-7e672d6cef4e'),
+      _mk('江南煙雨',         '1565618459033-c6e0625dde91'),
+      _mk('山寺鐘聲',         '1564677755080-6d2eb59a5c3b'),
+      _mk('雲煙繚繞',         '1470252649378-9c29740c9fa8'),
+      _mk('幽谷晨霧',         '1490730141103-6cac27aaab94'),
+      _mk('梅嶺雪意',         '1514241516423-6c0a5e031aa2'),
+      _mk('峰巒疊翠',         '1441974231531-c6227db76b6e'),
+      // Pexels 來源
+      _P('雲霧繚繞峰',        372098),
+      _P('東方山水意',        290452),
+      _P('煙霞秀色',          1480690),
+    ]
+  },
+
+  // ── 漫畫日系（動畫感、日式街景與庭園）─────────────────────────
+  manga: {
+    name: '漫畫日系', emoji: '🎌',
+    desc: '動畫感的日式風景',
+    photos: [
+      _mk('京都楓紅',         '1493997181344-712f2f19d87a'),
+      _mk('東京夜景',         '1540959733332-eab4deabeeaf'),
+      _mk('富士山遠景',       '1493514789931-586cb221d7a7'),
+      _mk('鳥居神社',         '1545569310-3a4894c6e9e2'),
+      _mk('和風庭園',         '1528360983277-13d401cdc186'),
+      _mk('日式街道',         '1554188248-986adbb73be4'),
+      _mk('櫻花隧道',         '1522383225653-ed111181a951'),
+      _mk('城下町',           '1542931287-023b922fa89b'),
+      _mk('動畫天空',         '1419242902214-272b3f66ee7a'),
+      _mk('鯉魚旗',           '1480796927426-f609979314bd'),
+      // Pexels 補充
+      _P('日本街頭',          161963),
+      _P('和風小巷',          2071882),
+      _P('夢幻動畫感',        1525041),
+    ]
+  },
+
+  // ── 潑墨山水（黑白水墨、潑彩抽象意境）─────────────────────────
+  splash: {
+    name: '潑墨山水', emoji: '🖌️',
+    desc: '黑白潑墨・抽象意境',
+    photos: [
+      _mk('水墨遠山',         '1486325212027-8081e485255e'),
+      _mk('黑白雲海',         '1429552077091-836152271555'),
+      _mk('潑墨意境',         '1452796807689-12bd9a9c5d77'),
+      _mk('煙雲深處',         '1462536943532-57a629f6cc60'),
+      _mk('單色峰巒',         '1502082553048-f009c37129b9'),
+      _mk('禪境山影',         '1467533003447-e295ff1b0435'),
+      _mk('水墨流動',         '1505144808419-1957a94ca61e'),
+      _mk('抽象波墨',         '1490806843957-31f4c9a91c65'),
+      _mk('江南山韻',         '1518837695005-2083093ee35b'),
+      // Pexels 補充
+      _P('墨色山川',          268533),
+      _P('水墨倒影',          325944),
+    ]
+  },
+
+  warm: {
+    name: '暖陽居家', emoji: '☕',
+    desc: '溫暖的居家窗景',
+    photos: [
+      _mk('晨光咖啡',     '1495474472287-4d71bcdd2085'),
+      _mk('窗邊書本',     '1455390582262-044cdead277a'),
+      _mk('暖光早餐',     '1533089860892-a7c6f0a88666'),
+      _mk('木桌花瓶',     '1490578474895-699cd4e2cf59'),
+      _mk('陽光窗台',     '1494438639946-1ebd1d20bf85'),
+      _mk('居家植物',     '1463320726281-696a485928c7'),
+      _mk('暖陽角落',     '1513519245088-0e12902e5a38'),
+      _mk('溫馨午後',     '1453928582365-b6ad33cbcf64'),
+      // Pexels 來源
+      _P('早餐咖啡',      230544),
+      _P('窗邊靜物',      545758),
+      _P('居家植物角',    1834399),
+      _P('木桌花藝',      1166209),
+    ]
+  },
+};
+
+const CATEGORY_KEYS = Object.keys(PHOTO_CATEGORIES);
+
+// ──────────────────────────────────────────────────────────────
+// 🎨 圖片濾鏡：用 ctx.filter 在繪圖前套用 CSS filter 函式
+// ──────────────────────────────────────────────────────────────
+const IMAGE_FILTERS = {
+  none:   { name: '原圖',   emoji: '○', css: 'none' },
+  bw:     { name: '黑白',   emoji: '◐', css: 'grayscale(100%)' },
+  sepia:  { name: '復古',   emoji: '◉', css: 'sepia(75%) contrast(1.05) brightness(1.03)' },
+  vivid:  { name: '鮮明',   emoji: '✦', css: 'saturate(1.45) contrast(1.12)' },
+  soft:   { name: '柔和',   emoji: '◯', css: 'saturate(0.78) brightness(1.08) contrast(0.92)' },
+  cool:   { name: '冷色',   emoji: '❄', css: 'hue-rotate(-15deg) saturate(1.18) brightness(1.02)' },
+  warm:   { name: '暖陽',   emoji: '☀', css: 'sepia(28%) saturate(1.35) brightness(1.04)' },
+  misty:  { name: '朦朧',   emoji: '☁', css: 'blur(1.5px) brightness(1.08) saturate(0.9)' },
+  noir:   { name: '夜色',   emoji: '◾', css: 'brightness(0.78) contrast(1.18) saturate(0.85)' },
+  dream:  { name: '夢幻',   emoji: '✿', css: 'contrast(0.85) saturate(1.25) brightness(1.1) blur(0.5px)' },
+};
+const FILTER_KEYS = Object.keys(IMAGE_FILTERS);
+
+// ──────────────────────────────────────────────────────────────
+// ✒️ 字體樣式：影響祝福文字的字體、字重、陰影風格
+// ──────────────────────────────────────────────────────────────
+const FONT_STYLES = {
+  classic: {
+    name: '經典襯線',
+    desc: '溫潤書卷氣',
+    family: '"Noto Serif TC", "Songti TC", "PingFang TC", serif',
+    weight: 700,
+    letterSpacing: 0,
+    sizeFactor: 1,
+    textColor: '#FFFFFF',
+    shadowBlur: 18, shadowColor: 'rgba(0,0,0,0.6)', shadowOffsetY: 2,
+    stroke: null,
+  },
+  brush: {
+    name: '毛筆書法',
+    desc: '中國風水墨',
+    family: '"Ma Shan Zheng", "DFKai-SB", "標楷體", "Noto Serif TC", serif',
+    weight: 400,                    // 毛筆字本身就有筆畫，不需要加粗
+    letterSpacing: 8,
+    sizeFactor: 1.18,
+    textColor: '#FFFFFF',
+    shadowBlur: 22, shadowColor: 'rgba(0,0,0,0.7)', shadowOffsetY: 3,
+    stroke: null,
+  },
+  poster: {
+    name: '海報優雅',
+    desc: '雜誌封面風',
+    family: '"ZCOOL XiaoWei", "Noto Serif TC", serif',
+    weight: 400,
+    letterSpacing: 4,
+    sizeFactor: 1.08,
+    textColor: '#FFFFFF',
+    shadowBlur: 14, shadowColor: 'rgba(0,0,0,0.55)', shadowOffsetY: 2,
+    stroke: { color: 'rgba(0,0,0,0.25)', width: 3 },
+  },
+  retro: {
+    name: '復古廣告',
+    desc: '油性厚實字',
+    family: '"ZCOOL QingKe HuangYou", "Noto Sans TC", sans-serif',
+    weight: 400,
+    letterSpacing: 2,
+    sizeFactor: 1.05,
+    textColor: '#FFFCEF',
+    shadowBlur: 0, shadowColor: 'transparent', shadowOffsetY: 0,
+    stroke: { color: '#2A1810', width: 6 },     // 厚實外框 = 海報廣告感
+  },
+};
+const FONT_STYLE_KEYS = Object.keys(FONT_STYLES);
+
+// 把所有圖片攤平成一個陣列，用來支援「每日輪換」
+const ALL_PHOTOS_FLAT = CATEGORY_KEYS.flatMap(k =>
+  PHOTO_CATEGORIES[k].photos.map(p => ({ ...p, category: k }))
+);
+
+// 取得今日推薦圖片（依日期穩定產生，每天不同）
+function getDailyPhoto() {
+  const d = new Date();
+  const dayOfYear = Math.floor(
+    (d - new Date(d.getFullYear(), 0, 0)) / 86400000
+  );
+  // 用日期當種子，每天指向不同圖
+  const idx = dayOfYear % ALL_PHOTOS_FLAT.length;
+  return ALL_PHOTOS_FLAT[idx];
+}
+
+// 在某分類下，取得當天該分類的代表圖（每天不同）
+function getDailyPhotoInCategory(catKey) {
+  const cat = PHOTO_CATEGORIES[catKey];
+  if (!cat || !cat.photos.length) return null;
+  const d = new Date();
+  const dayOfYear = Math.floor(
+    (d - new Date(d.getFullYear(), 0, 0)) / 86400000
+  );
+  return cat.photos[dayOfYear % cat.photos.length];
+}
+
+// ============================================================
+// Photo overlay template — renders a real photo + text overlay
+// ============================================================
+TEMPLATES.photo = {
+  name: '照片', emoji: '📸',
+  thumb: 'linear-gradient(135deg,#3D352D,#1F1B17)',
+  render(ctx, w, h, msg, dateStr, weekStr, sig, img) {
+    if (img && img.complete && img.naturalWidth > 0) {
+      // ✦ 套用使用者選擇的圖片濾鏡
+      const filterCss = (IMAGE_FILTERS[state.imageFilter] || IMAGE_FILTERS.none).css;
+      ctx.filter = filterCss;
+
+      const ir = img.naturalWidth / img.naturalHeight, cr = w / h;
+      let sw, sh, sx, sy;
+      if (ir > cr) { sh = img.naturalHeight; sw = sh * cr; sx = (img.naturalWidth - sw) / 2; sy = 0; }
+      else { sw = img.naturalWidth; sh = sw / cr; sx = 0; sy = (img.naturalHeight - sh) / 2; }
+      ctx.drawImage(img, sx, sy, sw, sh, 0, 0, w, h);
+
+      ctx.filter = 'none';     // 重設，避免影響後續文字
+    } else {
+      const g = ctx.createLinearGradient(0, 0, 0, h);
+      g.addColorStop(0, '#3D352D'); g.addColorStop(1, '#1F1B17');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = 'rgba(255,255,255,0.35)';
+      ctx.font = `300 ${w * 0.03}px "Noto Sans TC"`;
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('照片載入中…', w / 2, h / 2);
+    }
+    // Top vignette
+    const tg = ctx.createLinearGradient(0, 0, 0, h * 0.35);
+    tg.addColorStop(0, 'rgba(0,0,0,0.5)'); tg.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = tg; ctx.fillRect(0, 0, w, h * 0.35);
+    // Bottom vignette
+    const bg = ctx.createLinearGradient(0, h * 0.5, 0, h);
+    bg.addColorStop(0, 'rgba(0,0,0,0)'); bg.addColorStop(0.5, 'rgba(0,0,0,0.45)'); bg.addColorStop(1, 'rgba(0,0,0,0.78)');
+    ctx.fillStyle = bg; ctx.fillRect(0, h * 0.5, w, h * 0.5);
+    // Text — 使用使用者選擇的字體樣式
+    const fs = FONT_STYLES[state.fontStyle] || FONT_STYLES.classic;
+    drawTitleSerif(ctx, msg, w / 2, h * 0.28, w * 0.82, fs.textColor, fs.weight, fs);
+    drawDateBlock(ctx, dateStr, weekStr, w / 2, h * 0.8, 'rgba(255,255,255,0.97)');
+    if (sig) drawSignature(ctx, sig, w / 2, h * 0.91, 'rgba(255,255,255,0.88)');
+    drawCornerMark(ctx, w, h, 'rgba(255,255,255,0.8)');
+  }
+};
+
+// Image cache + loader (Unsplash 直連，crossOrigin anonymous 支援 canvas)
+const imgCache = new Map();
+function loadImage(url) {
+  const cached = imgCache.get(url);
+  if (cached) return Promise.resolve(cached);
+
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+
+    // 防止 canvas 被污染
+    img.crossOrigin = 'anonymous';
+    img.referrerPolicy = 'no-referrer';
+
+    img.onload = () => {
+      imgCache.set(url, img);
+      resolve(img);
+    };
+
+    img.onerror = () => {
+      reject(new Error('圖片載入失敗: ' + url));
+    };
+
+    img.src = url;
+  });
+}
+
+// ============================================================
+// Drawing helpers
+// ============================================================
+function drawTitleSerif(ctx, text, x, y, maxW, color, weight, fs) {
+  // fs (fontStyle) 是可選的字體樣式物件，沒給就用經典
+  fs = fs || FONT_STYLES.classic;
+
+  ctx.fillStyle = color || fs.textColor;
+  const fontFamily = fs.family;
+  let size = Math.floor(maxW / Math.max(text.length * 0.95, 4));
+  size = Math.min(size, 130) * (fs.sizeFactor || 1);
+  size = Math.max(size, 50);
+
+  ctx.font = `${weight || fs.weight} ${size}px ${fontFamily}`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  // 套用字距（毛筆/海報字會更好看）
+  if (typeof ctx.letterSpacing !== 'undefined') {
+    ctx.letterSpacing = (fs.letterSpacing || 0) + 'px';
+  }
+
+  // Simple wrapping if needed
+  const lines = wrapCJK(ctx, text, maxW);
+  const lineHeight = size * 1.3;
+  const totalH = lines.length * lineHeight;
+  const startY = y - totalH/2 + lineHeight/2;
+
+  // 陰影設定 (來自字體樣式)
+  ctx.shadowColor = fs.shadowColor || 'transparent';
+  ctx.shadowBlur = fs.shadowBlur || 0;
+  ctx.shadowOffsetY = fs.shadowOffsetY || 0;
+
+  lines.forEach((line, i) => {
+    const ly = startY + i * lineHeight;
+    // 厚實外框 (如復古廣告字)
+    if (fs.stroke) {
+      ctx.lineWidth = fs.stroke.width * (size / 100);
+      ctx.strokeStyle = fs.stroke.color;
+      ctx.lineJoin = 'round';
+      ctx.miterLimit = 2;
+      ctx.strokeText(line, x, ly);
+    }
+    ctx.fillText(line, x, ly);
+  });
+
+  // 重設
+  ctx.shadowColor = 'transparent';
+  ctx.shadowBlur = 0;
+  ctx.shadowOffsetY = 0;
+  if (typeof ctx.letterSpacing !== 'undefined') ctx.letterSpacing = '0px';
+}
+
+function wrapCJK(ctx, text, maxW) {
+  const lines = [];
+  let cur = '';
+  for (const ch of text) {
+    const test = cur + ch;
+    if (ctx.measureText(test).width > maxW && cur !== '') {
+      lines.push(cur); cur = ch;
+    } else {
+      cur = test;
+    }
+  }
+  if (cur) lines.push(cur);
+  return lines;
+}
+
+function drawDateBlock(ctx, dateStr, weekStr, x, y, color) {
+  ctx.fillStyle = color;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  // Date
+  ctx.font = `300 ${dateStr.length > 12 ? 36 : 42}px "Noto Serif TC", serif`;
+  ctx.fillText(dateStr, x, y);
+  if (weekStr) {
+    // Tiny line above weekday
+    ctx.font = `400 24px "Noto Sans TC", sans-serif`;
+    ctx.fillText(weekStr, x, y + 50);
+  }
+}
+
+function drawSignature(ctx, sig, x, y, color, align = 'center') {
+  ctx.fillStyle = color;
+  ctx.textAlign = align;
+  ctx.textBaseline = 'middle';
+  ctx.font = `400 28px "Caveat", "Noto Serif TC", cursive`;
+  ctx.fillText(sig, x, y);
+}
+
+function drawCornerMark(ctx, w, h, color) {
+  ctx.fillStyle = color;
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  ctx.font = `300 18px "Noto Serif TC", serif`;
+  ctx.globalAlpha = 0.5;
+  ctx.fillText('晨間問候 · Daily', w*0.05, h*0.96);
+  ctx.globalAlpha = 1;
+}
+
+function drawCloud(ctx, x, y, r) {
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, Math.PI*2);
+  ctx.arc(x + r*0.8, y, r*0.7, 0, Math.PI*2);
+  ctx.arc(x - r*0.8, y, r*0.6, 0, Math.PI*2);
+  ctx.arc(x + r*0.4, y - r*0.4, r*0.55, 0, Math.PI*2);
+  ctx.fill();
+}
+
+function drawHeart(ctx, x, y, r, color) {
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.moveTo(x, y + r*0.3);
+  ctx.bezierCurveTo(x, y, x - r, y, x - r, y + r*0.4);
+  ctx.bezierCurveTo(x - r, y + r*0.8, x, y + r*1.1, x, y + r*1.4);
+  ctx.bezierCurveTo(x, y + r*1.1, x + r, y + r*0.8, x + r, y + r*0.4);
+  ctx.bezierCurveTo(x + r, y, x, y, x, y + r*0.3);
+  ctx.fill();
+}
+
+function drawStar(ctx, cx, cy, r, color) {
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  for (let i = 0; i < 5; i++) {
+    const angle = (Math.PI * 2 * i) / 5 - Math.PI/2;
+    const angle2 = angle + Math.PI/5;
+    if (i === 0) ctx.moveTo(cx + Math.cos(angle)*r, cy + Math.sin(angle)*r);
+    else ctx.lineTo(cx + Math.cos(angle)*r, cy + Math.sin(angle)*r);
+    ctx.lineTo(cx + Math.cos(angle2)*r*0.4, cy + Math.sin(angle2)*r*0.4);
+  }
+  ctx.closePath();
+  ctx.fill();
+}
+
+function drawPetal(ctx, x, y, size, rotation) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(rotation * Math.PI / 180);
+  ctx.fillStyle = 'rgba(255,200,210,0.85)';
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.bezierCurveTo(size*0.3, -size*0.3, size, -size*0.2, size*1.1, size*0.2);
+  ctx.bezierCurveTo(size, size*0.5, size*0.5, size*0.6, 0, 0);
+  ctx.fill();
+  // Stamen
+  ctx.strokeStyle = 'rgba(190,80,110,0.5)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(size*0.1, size*0.05);
+  ctx.lineTo(size*0.5, size*0.15);
+  ctx.stroke();
+  ctx.restore();
+}
+
+function drawLeaf(ctx, x, y, size, rotation, color) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(rotation * Math.PI / 180);
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.bezierCurveTo(size*0.6, -size*0.6, size*1.5, -size*0.4, size*1.8, 0);
+  ctx.bezierCurveTo(size*1.5, size*0.4, size*0.6, size*0.6, 0, 0);
+  ctx.fill();
+  // Vein
+  ctx.strokeStyle = 'rgba(255,255,255,0.3)';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(size*0.1, 0);
+  ctx.lineTo(size*1.6, 0);
+  ctx.stroke();
+  ctx.restore();
+}
+
+// ============================================================
+// State + persistence
+// ============================================================
+const state = {
+  templateKey: 'photo',     // 預設使用照片模板（不再使用 Canvas 模板）
+  categoryKey: 'morning',   // 預設分類：早安晨光
+  message: '',
+  showDate: true,
+  showWeekday: true,
+  signature: '',
+  photoUrl: null,           // 目前選定的圖片 URL
+  lastDailyApply: null,     // 上次套用「每日推薦」的日期字串
+  customPhotos: {},         // 使用者自訂圖片 { categoryKey: [{name, url, thumb}, ...] }
+  imageFilter: 'none',      // 圖片濾鏡：none/bw/sepia/vivid/soft/cool/warm/misty
+  fontStyle: 'classic'      // 字體樣式：classic/brush/poster/retro
+};
+
+function loadState() {
+  try {
+    const s = JSON.parse(localStorage.getItem('morning-state') || '{}');
+    Object.assign(state, s);
+  } catch(e) {}
+}
+function saveState() {
+  try { localStorage.setItem('morning-state', JSON.stringify(state)); } catch(e) {}
+}
+
+// ============================================================
+// Date utils
+// ============================================================
+function getDateStrings() {
+  const d = new Date();
+  const year = d.getFullYear();
+  const m = d.getMonth() + 1;
+  const day = d.getDate();
+  const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
+  const wk = weekdays[d.getDay()];
+
+  const parts = {
+    full: `${year}年${m}月${day}日`,
+    short: `${m}月${day}日`,
+    eng: d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+    weekday: `星期${wk}`,
+    weekdayEn: d.toLocaleDateString('en-US', { weekday: 'long' }),
+    num: day, m: m, year: year
+  };
+  return parts;
+}
+
+function getTodayGreeting() {
+  // Pick a greeting based on day of year for some consistency
+  const d = new Date();
+  const startOfYear = new Date(d.getFullYear(), 0, 0);
+  const diff = d - startOfYear;
+  const dayOfYear = Math.floor(diff / 86400000);
+  return GREETINGS[dayOfYear % GREETINGS.length];
+}
+
+// ============================================================
+// Render
+// ============================================================
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+function render() {
+  const w = canvas.width, h = canvas.height;
+  ctx.clearRect(0, 0, w, h);
+  const dates = getDateStrings();
+  let dateStr = ''; if (state.showDate) dateStr = dates.full;
+  let weekStr = ''; if (state.showWeekday) weekStr = dates.weekday;
+  const msg = state.message || getTodayGreeting();
+
+  if (state.photoUrl) {
+    // Photo mode — Unsplash 直連載入，配合 crossOrigin 跨域
+    const tpl = TEMPLATES.photo;
+    // 更新徽章為「分類 emoji + 圖片名」
+    const cat = PHOTO_CATEGORIES[state.categoryKey];
+    const photo = cat && cat.photos.find(p => p.url === state.photoUrl);
+    const badgeText = (cat && photo) ? `${cat.emoji} ${photo.name}` : tpl.name;
+    document.getElementById('badge').textContent = badgeText;
+    const cached = imgCache.get(state.photoUrl);
+    if (cached) { tpl.render(ctx, w, h, msg, dateStr, weekStr, state.signature, cached); return; }
+    tpl.render(ctx, w, h, msg, dateStr, weekStr, state.signature, null); // placeholder
+    document.getElementById('loading').classList.add('show');
+    const url = state.photoUrl;
+    loadImage(url).then(img => {
+      if (state.photoUrl !== url) return; // switched away
+      ctx.clearRect(0, 0, w, h);
+      tpl.render(ctx, w, h, msg, dateStr, weekStr, state.signature, img);
+      document.getElementById('loading').classList.remove('show');
+    }).catch(() => {
+      document.getElementById('loading').classList.remove('show');
+      // 自動換成同分類的另一張圖（如果有的話）
+      const cat = PHOTO_CATEGORIES[state.categoryKey];
+      if (cat) {
+        const nextPhoto = cat.photos.find(p => p.url !== url);
+        if (nextPhoto) {
+          state.photoUrl = nextPhoto.url;
+          saveState();
+          buildStylePicker();
+          render();
+          toast('⚠ 該張載入失敗，已換成「' + nextPhoto.name + '」');
+          return;
+        }
+      }
+      toast('⚠ 照片載入失敗，請確認網路連線');
+    });
+    return;
+  }
+
+  const tpl = TEMPLATES[state.templateKey];
+  if (!tpl) return;
+  tpl.render(ctx, w, h, msg, dateStr, weekStr, state.signature);
+  document.getElementById('badge').textContent = tpl.name;
+}
+
+function showLoading(on) {
+  const l = document.getElementById('loading');
+  if (l) l.classList.toggle('show', on);
+}
+
+function buildStylePicker() {
+  // ── 1) 建立分類下拉選單（如果還沒建立過）─────────────────────
+  const dropdown = document.getElementById('catDropdown');
+  if (dropdown && dropdown.options.length === 0) {
+    CATEGORY_KEYS.forEach(key => {
+      const cat = PHOTO_CATEGORIES[key];
+      const opt = document.createElement('option');
+      opt.value = key;
+      opt.textContent = `${cat.emoji}  ${cat.name}`;
+      dropdown.appendChild(opt);
+    });
+    dropdown.value = state.categoryKey || CATEGORY_KEYS[0];
+    dropdown.onchange = (e) => {
+      state.categoryKey = e.target.value;
+      // 切換分類時，自動帶入該類的「今日圖」
+      const todayInCat = getDailyPhotoInCategory(state.categoryKey);
+      if (todayInCat) {
+        state.photoUrl = todayInCat.url;
+        state.templateKey = 'photo';
+      }
+      saveState();
+      buildStylePicker();
+      render();
+      toast(`已切換到「${PHOTO_CATEGORIES[state.categoryKey].name}」`);
+    };
+  }
+
+  // ── 2) 更新「今日推薦」徽章 ──────────────────────────────────
+  const todayBadge = document.getElementById('todayBadge');
+  if (todayBadge) {
+    const todays = getDailyPhoto();
+    todayBadge.textContent = `今日推薦：${PHOTO_CATEGORIES[todays.category].emoji} ${todays.name}`;
+    todayBadge.onclick = () => {
+      state.categoryKey = todays.category;
+      state.photoUrl = todays.url;
+      state.templateKey = 'photo';
+      dropdown.value = todays.category;
+      saveState();
+      buildStylePicker();
+      render();
+      toast(`✨ 已套用今日推薦：${todays.name}`);
+    };
+  }
+
+  // ── 3) 繪製目前分類的所有圖片卡片 ────────────────────────────
+  const wrap = document.getElementById('styles');
+  wrap.innerHTML = '';
+
+  const catKey = state.categoryKey || CATEGORY_KEYS[0];
+  const cat = PHOTO_CATEGORIES[catKey];
+  const customPhotos = (state.customPhotos && state.customPhotos[catKey]) || [];
+  const todayInCat = getDailyPhotoInCategory(catKey);
+
+  // 內建圖片
+  cat.photos.forEach(p => {
+    const isActive = state.photoUrl === p.url;
+    const isToday = todayInCat && todayInCat.url === p.url;
+    const sourceTag = p.source === 'pexels' ? 'P' :
+                      p.source === 'stocksnap' ? 'S' :
+                      p.source === 'custom' ? '★' : 'U';
+    const card = document.createElement('div');
+    card.className = 'style-card photo-preset'
+      + (isActive ? ' active' : '')
+      + (isToday ? ' today' : '');
+    card.title = `${cat.name} · ${p.name}（來源：${p.source || 'unsplash'}）${isToday ? '（今日推薦）' : ''}`;
+    card.innerHTML = `
+      <div class="photo-thumb" style="background-image:url('${p.thumb}')">
+        <div class="photo-tag">${cat.emoji}</div>
+        <div class="source-tag" data-src="${p.source || 'unsplash'}">${sourceTag}</div>
+        ${isToday ? '<div class="today-pin">★ 今日</div>' : ''}
+      </div>
+      <div class="lbl">${p.name}</div>
+    `;
+    card.onclick = () => {
+      state.categoryKey = catKey;
+      state.templateKey = 'photo';
+      state.photoUrl = p.url;
+      saveState();
+      buildStylePicker();
+      render();
+    };
+    wrap.appendChild(card);
+  });
+
+  // 自訂圖片
+  customPhotos.forEach((p, idx) => {
+    const isActive = state.photoUrl === p.url;
+    const card = document.createElement('div');
+    card.className = 'style-card photo-preset custom' + (isActive ? ' active' : '');
+    card.title = `自訂 · ${p.name}（長按可移除）`;
+    card.innerHTML = `
+      <div class="photo-thumb" style="background-image:url('${p.thumb || p.url}')">
+        <div class="photo-tag">${cat.emoji}</div>
+        <div class="source-tag" data-src="custom">★</div>
+        <button class="remove-custom" title="移除這張自訂圖片">×</button>
+      </div>
+      <div class="lbl">${p.name}</div>
+    `;
+    card.onclick = (e) => {
+      if (e.target.classList.contains('remove-custom')) {
+        e.stopPropagation();
+        if (confirm(`要移除「${p.name}」嗎？`)) {
+          state.customPhotos[catKey].splice(idx, 1);
+          if (state.photoUrl === p.url) {
+            // 如果正在使用被刪掉的圖，換成內建第一張
+            state.photoUrl = cat.photos[0].url;
+          }
+          saveState();
+          buildStylePicker();
+          render();
+          toast('已移除自訂圖片');
+        }
+        return;
+      }
+      state.categoryKey = catKey;
+      state.templateKey = 'photo';
+      state.photoUrl = p.url;
+      saveState();
+      buildStylePicker();
+      render();
+    };
+    wrap.appendChild(card);
+  });
+
+  // 「+ 自訂圖片」按鈕（放在最後）
+  const addCard = document.createElement('div');
+  addCard.className = 'style-card add-custom';
+  addCard.title = '加入自訂圖片網址（Pixabay、Flickr、任何網站皆可）';
+  addCard.innerHTML = `
+    <div class="photo-thumb add-thumb">
+      <div class="add-icon">➕</div>
+      <div class="add-text">新增<br>自訂圖</div>
+    </div>
+    <div class="lbl">＋ 自訂圖片</div>
+  `;
+  addCard.onclick = () => addCustomPhoto(catKey);
+  wrap.appendChild(addCard);
+}
+
+// ─── 加入自訂圖片：使用者貼上 URL ─────────────────────────────
+function addCustomPhoto(catKey) {
+  const url = prompt(
+    '請貼上圖片的完整網址：\n\n' +
+    '可從 Pixabay、Flickr、自己網路上找到的任何圖片網址。\n' +
+    '注意：需以 https:// 開頭，且該網站允許跨域使用 (CORS)，\n' +
+    '否則下載/分享功能可能不可用，但仍可顯示圖片。'
+  );
+  if (!url || !url.trim()) return;
+  const trimmed = url.trim();
+  if (!/^https?:\/\//i.test(trimmed)) {
+    toast('⚠ 網址必須以 http:// 或 https:// 開頭');
+    return;
+  }
+
+  const name = prompt('請為這張圖取個名字（會顯示在選擇器上）：', '我的圖片') || '我的圖片';
+
+  if (!state.customPhotos) state.customPhotos = {};
+  if (!state.customPhotos[catKey]) state.customPhotos[catKey] = [];
+
+  state.customPhotos[catKey].push({
+    name: name.trim().slice(0, 12),
+    url: trimmed,
+    thumb: trimmed,
+    source: 'custom'
+  });
+
+  // 自動套用剛加入的圖
+  state.categoryKey = catKey;
+  state.templateKey = 'photo';
+  state.photoUrl = trimmed;
+
+  saveState();
+  buildStylePicker();
+  render();
+  toast(`✓ 已加入「${name}」到「${PHOTO_CATEGORIES[catKey].name}」`);
+}
+
+
+// ============================================================
+// UI - Library
+// ============================================================
+function buildLibrary() {
+  const wrap = document.getElementById('library');
+  wrap.innerHTML = '';
+  GREETINGS.forEach(g => {
+    const item = document.createElement('div');
+    item.className = 'lib-item';
+    item.textContent = g;
+    item.onclick = () => {
+      state.message = g;
+      document.getElementById('msgInput').value = g;
+      saveState();
+      render();
+      toast('已套用：' + g);
+    };
+    wrap.appendChild(item);
+  });
+}
+
+function toggleLibrary() {
+  const lib = document.getElementById('library');
+  const btn = document.getElementById('libToggle');
+  lib.classList.toggle('open');
+  btn.textContent = lib.classList.contains('open') ? '📚 文案庫 ▴' : '📚 文案庫 ▾';
+}
+
+// ─── 進階設定：圖片濾鏡 + 字體樣式 chip 選項 ──────────────────
+function buildOptionChips() {
+  // 圖片濾鏡
+  const fWrap = document.getElementById('filterChips');
+  if (fWrap) {
+    fWrap.innerHTML = '';
+    FILTER_KEYS.forEach(key => {
+      const f = IMAGE_FILTERS[key];
+      const chip = document.createElement('div');
+      chip.className = 'opt-chip' + (state.imageFilter === key ? ' active' : '');
+      chip.dataset.filter = key;
+      chip.innerHTML = `
+        <div class="chip-icon">${f.emoji}</div>
+        <div class="chip-name">${f.name}</div>
+      `;
+      chip.onclick = () => {
+        state.imageFilter = key;
+        saveState();
+        buildOptionChips();
+        render();
+        toast(`已套用「${f.name}」濾鏡`);
+      };
+      fWrap.appendChild(chip);
+    });
+  }
+
+  // 字體樣式
+  const sWrap = document.getElementById('fontChips');
+  if (sWrap) {
+    sWrap.innerHTML = '';
+    FONT_STYLE_KEYS.forEach(key => {
+      const fs = FONT_STYLES[key];
+      const chip = document.createElement('div');
+      chip.className = 'opt-chip' + (state.fontStyle === key ? ' active' : '');
+      chip.dataset.fs = key;
+      chip.innerHTML = `
+        <div class="chip-name">${fs.name}</div>
+        <div class="chip-desc">${fs.desc}</div>
+      `;
+      chip.onclick = () => {
+        state.fontStyle = key;
+        saveState();
+        buildOptionChips();
+        render();
+        toast(`已套用「${fs.name}」字體`);
+      };
+      sWrap.appendChild(chip);
+    });
+  }
+}
+
+// ============================================================
+// Actions: download / share / copy / email
+// ============================================================
+function getCanvasBlob() {
+  return new Promise(res => canvas.toBlob(b => res(b), 'image/png', 0.95));
+}
+
+async function actDownload() {
+  const blob = await getCanvasBlob();
+  if (!blob) return toast('產生圖片失敗');
+  const url = URL.createObjectURL(blob);
+  const dates = getDateStrings();
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `早安_${dates.year}${String(dates.m).padStart(2,'0')}${String(dates.num).padStart(2,'0')}.png`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  toast('✓ 已下載到您的相簿/下載資料夾');
+}
+
+async function actShare() {
+  const blob = await getCanvasBlob();
+  if (!blob) return toast('產生圖片失敗');
+  const dates = getDateStrings();
+  const file = new File([blob], `早安_${dates.short}.png`, { type: 'image/png' });
+  const msg = state.message || getTodayGreeting();
+
+  // Try Web Share API (most mobile browsers)
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    try {
+      await navigator.share({
+        files: [file],
+        title: '今日早安問候',
+        text: `${msg}　${dates.full}`
+      });
+      toast('✓ 已開啟分享選單');
+      return;
+    } catch (e) {
+      if (e.name === 'AbortError') return; // user cancelled
+    }
+  }
+  // Fallback - download with hint
+  await actDownload();
+  toast('已下載！請打開 LINE/Messenger 從相簿傳送');
+}
+
+async function actCopy() {
+  const blob = await getCanvasBlob();
+  if (!blob) return toast('產生圖片失敗');
+
+  if (navigator.clipboard && window.ClipboardItem) {
+    try {
+      await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+      toast('✓ 圖片已複製，可直接貼到任何聊天框');
+      return;
+    } catch (e) { /* fall through */ }
+  }
+  await actDownload();
+  toast('您的瀏覽器不支援複製，已自動下載');
+}
+
+async function actEmail() {
+  const dates = getDateStrings();
+  const msg = state.message || getTodayGreeting();
+  const subject = encodeURIComponent(`🌅 今日早安 ${dates.full}`);
+  const body = encodeURIComponent(`${msg}\n\n${dates.full} ${dates.weekday}\n\n（圖片附件請從本機相簿選取）\n\n— 晨間問候`);
+
+  // First download the image, then open mail app
+  await actDownload();
+  setTimeout(() => {
+    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+  }, 600);
+  toast('已下載圖片，正在開啟郵件 App');
+}
+
+function actNewRandom() {
+  // 從目前分類中隨機抽一張不同的圖
+  const catKey = state.categoryKey || CATEGORY_KEYS[0];
+  const photos = PHOTO_CATEGORIES[catKey].photos;
+  if (photos.length <= 1) {
+    // 該分類只有 1 張，就換個分類
+    const otherCats = CATEGORY_KEYS.filter(k => k !== catKey);
+    state.categoryKey = otherCats[Math.floor(Math.random() * otherCats.length)];
+  }
+  const pool = PHOTO_CATEGORIES[state.categoryKey].photos.filter(p => p.url !== state.photoUrl);
+  const pick = pool[Math.floor(Math.random() * pool.length)] || PHOTO_CATEGORIES[state.categoryKey].photos[0];
+  state.templateKey = 'photo';
+  state.photoUrl = pick.url;
+  randomMessage(true);
+  saveState();
+  buildStylePicker();
+  render();
+  toast(`✦ ${PHOTO_CATEGORIES[state.categoryKey].emoji} ${pick.name}`);
+}
+
+function useTodayGreeting() {
+  const g = getTodayGreeting();
+  state.message = g;
+  document.getElementById('msgInput').value = g;
+  saveState();
+  render();
+  toast('✓ 已套用今日推薦');
+}
+
+function randomMessage(silent = false) {
+  let g = state.message;
+  let tries = 0;
+  while (g === state.message && tries < 10) {
+    g = GREETINGS[Math.floor(Math.random() * GREETINGS.length)];
+    tries++;
+  }
+  state.message = g;
+  document.getElementById('msgInput').value = g;
+  saveState();
+  render();
+  if (!silent) toast('已換新文字：' + g);
+}
+
+// ============================================================
+// Toast
+// ============================================================
+let toastTimer;
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2400);
+}
+
+// ============================================================
+// Init
+// ============================================================
+function showLoadingBriefly() {
+  const l = document.getElementById('loading');
+  l.classList.add('show');
+  setTimeout(() => l.classList.remove('show'), 250);
+}
+
+function init() {
+  loadState();
+
+  // Header date
+  const d = new Date();
+  document.getElementById('dayNum').textContent = d.getDate();
+  const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+  document.getElementById('dayYm').textContent = `${months[d.getMonth()]} · ${d.getFullYear()}`;
+
+  // ── 每日自動套用「今日推薦圖」──────────────────────────────
+  // 如果今天還沒套用過，就自動換成今日推薦的圖片（每天不同）
+  const todayKey = `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`;
+  if (state.lastDailyApply !== todayKey) {
+    const todays = getDailyPhoto();
+    state.templateKey = 'photo';
+    state.categoryKey = todays.category;
+    state.photoUrl = todays.url;
+    state.lastDailyApply = todayKey;
+    // 同時推薦今日問候語
+    state.message = getTodayGreeting();
+    saveState();
+  }
+  // 萬一從未開啟過、也沒設定，給個保底
+  if (!state.photoUrl) {
+    const fallback = PHOTO_CATEGORIES.morning.photos[0];
+    state.templateKey = 'photo';
+    state.categoryKey = 'morning';
+    state.photoUrl = fallback.url;
+  }
+  if (!state.message) state.message = getTodayGreeting();
+  document.getElementById('msgInput').value = state.message;
+
+  // Settings inputs
+  document.getElementById('showDate').checked = state.showDate;
+  document.getElementById('showWeekday').checked = state.showWeekday;
+  document.getElementById('signature').value = state.signature || '';
+
+  // Wire inputs
+  const msgEl = document.getElementById('msgInput');
+  msgEl.addEventListener('input', e => {
+    state.message = e.target.value;
+    saveState();
+    render();
+  });
+
+  document.getElementById('showDate').addEventListener('change', e => {
+    state.showDate = e.target.checked;
+    saveState(); render();
+  });
+  document.getElementById('showWeekday').addEventListener('change', e => {
+    state.showWeekday = e.target.checked;
+    saveState(); render();
+  });
+  document.getElementById('signature').addEventListener('input', e => {
+    state.signature = e.target.value;
+    saveState(); render();
+  });
+
+  buildStylePicker();
+  buildLibrary();
+  buildOptionChips();    // 圖片濾鏡 + 字體樣式
+
+  // Wait for fonts to load before first render so text looks right
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => render());
+  } else {
+    setTimeout(render, 200);
+  }
+  // Initial render in case fonts already cached
+  render();
+
+  // iOS install hint - show once
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  if (isIOS && !isStandalone && !localStorage.getItem('hint-dismissed')) {
+    document.getElementById('installHint').style.display = 'block';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', init);
+
+// Service worker registration — only works when served from HTTP(S), not file://
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+  // Inline service worker via blob
+  const swCode = `
+    self.addEventListener('install', e => self.skipWaiting());
+    self.addEventListener('activate', e => self.clients.claim());
+    self.addEventListener('fetch', e => {});
+  `;
+  const blob = new Blob([swCode], { type: 'application/javascript' });
+  const swUrl = URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl).catch(() => {});
+}
+</script>
+</body>
+</html>
